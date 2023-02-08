@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: Montserrat Helvetica Arial sans-serif;
+  color: #000000;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: Montserrat Helvetica Arial sans-serif;
+  color: #000000;
+  font-size: 1.5rem;
+  line-height: 1.9rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: Montserrat Helvetica Arial sans-serif;
+  color: #000000;
+  font-size: 1.25rem;
+  line-height: 1.56rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-family: Roboto Helvetica Arial sans-serif;
+  color: #444444;
+  font-size: 1.13rem;
+  line-height: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h5 {
+  font-family: Roboto Helvetica Arial sans-serif;
+  color: #444444;
+  font-size: 1rem;
+  line-height: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-family: Roboto Helvetica Arial sans-serif;
+  color: #444444;
+  font-size: 0.875rem;
+  line-height: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: Roboto Helvetica Arial sans-serif;
+  color: #444444;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+li {
+  font-family: Roboto Helvetica Arial sans-serif;
+  color: #444444;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+button {
+  border: unset;
+}
+
+label {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  font-family: Roboto Helvetica Arial sans-serif;
+}
