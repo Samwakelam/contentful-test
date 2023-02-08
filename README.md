@@ -21,4 +21,14 @@ I have set up a turbo repo to manage workspaces including 2 `apps/` directories 
 
 I have tested that my env variables can be received by the server side props in the next js application.
 
-### Setting up contentful client
+### 2. Setting up contentful client
+
+I have set up the contentful client in the `web-app` for the moment under lib/vendor/contentful.ts
+
+I'm not sure yet how THe community-hub-mono or the content-platform get each field back in a localised object, but I have set up the query perameter to look for the designated locales.
+
+I have set up Locales on the community develop space for en-US and en-GB and enabled them on `samsTestModal` content type.
+
+I have printed the entry types in the console for now.
+
+### 3. Creating components
