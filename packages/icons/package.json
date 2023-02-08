@@ -1,0 +1,27 @@
+{
+  "name": "@sam/icons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "types": "./index.ts",
+  "scripts": {
+    "dev": "vite serve --port=8081 & cosmos",
+    "test": "vitest --ui",
+    "lint": "eslint *.ts*",
+    "cosmos:export": "cosmos-export"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/ui": "^0.24.5",
+    "react": "^18.2.0",
+    "react-cosmos": "^5.7.2",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.2",
+    "vitest": "^0.24.5",
+    "webpack": "^5.74.0"
+  }
+}

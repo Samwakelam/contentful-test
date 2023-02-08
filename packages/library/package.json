@@ -1,0 +1,46 @@
+{
+  "name": "@sam/library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "dev": "vite serve --port=8080 ",
+    "test": "vitest --ui",
+    "lint": "eslint *.ts*",
+    "cosmos:export": "cosmos-export"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./*": [
+      "./src/*.ts",
+      "./src/*.tsx",
+      "./src/*/index.ts",
+      "./src/*/*.ts"
+    ]
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@types/react-modal": "^3.13.1",
+    "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/ui": "^0.24.5",
+    "next": "^13.0.5",
+    "react": "^18.2.0",
+    "react-cosmos": "^5.7.2",
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.4.3",
+    "ts-loader": "^9.4.1",
+    "ts-mockito": "^2.6.1",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.2",
+    "vitest": "^0.24.5",
+    "vite-tsconfig-paths": "^4.0.3",
+    "webpack": "^5.74.0"
+  },
+  "dependencies": {
+    "@sam/icons": "workspace:*",
+    "@sam/theme": "workspace:*"
+  }
+}
