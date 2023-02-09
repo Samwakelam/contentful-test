@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "strict": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+    "noEmit": false,
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsx": "react-jsx"
+  },
+  "exclude": ["node_modules"],
+  "include": ["."]
+}
