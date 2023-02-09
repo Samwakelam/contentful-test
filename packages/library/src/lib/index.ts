@@ -1,1 +1,1 @@
-export * from './workshop-manager';
+export * from './parsers';
