@@ -8,7 +8,7 @@ import './global.css';
 import fixture0 from './../__fixtures__/components/atoms/bar.fixture.tsx';
 import fixture1 from './../__fixtures__/components/atoms/button.fixture.tsx';
 import fixture2 from './../__fixtures__/components/atoms/card.fixture.tsx';
-import fixture3 from './../__fixtures__/components/atoms/menu-dropdown.fixture.tsx';
+import fixture3 from './../__fixtures__/components/atoms/dropdown.fixture.tsx';
 import fixture4 from './../__fixtures__/components/atoms/modal.fixture.tsx';
 import fixture5 from './../__fixtures__/components/atoms/placeholder.fixture.tsx';
 import fixture6 from './../__fixtures__/components/atoms/side-menu-link.fixture.tsx';
@@ -30,7 +30,7 @@ export const fixtures = {
   '__fixtures__/components/atoms/bar.fixture.tsx': { module: { default: fixture0 } },
   '__fixtures__/components/atoms/button.fixture.tsx': { module: { default: fixture1 } },
   '__fixtures__/components/atoms/card.fixture.tsx': { module: { default: fixture2 } },
-  '__fixtures__/components/atoms/menu-dropdown.fixture.tsx': { module: { default: fixture3 } },
+  '__fixtures__/components/atoms/dropdown.fixture.tsx': { module: { default: fixture3 } },
   '__fixtures__/components/atoms/modal.fixture.tsx': { module: { default: fixture4 } },
   '__fixtures__/components/atoms/placeholder.fixture.tsx': { module: { default: fixture5 } },
   '__fixtures__/components/atoms/side-menu-link.fixture.tsx': { module: { default: fixture6 } },

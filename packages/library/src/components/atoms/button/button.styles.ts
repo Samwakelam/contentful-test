@@ -30,6 +30,7 @@ export const buttonCss: Directive<CSSRules> = css({
     display: 'flex',
     alignItems: 'center',
     gap: theme('spacing.8'),
+    position: 'relative',
   },
 
   '&:hover': {
@@ -127,6 +128,7 @@ export const UnstyledButtonCss: Directive<CSSRules> = css({
   '&': {
     backgroundColor: 'unset',
     color: theme('colors.neutral.900'),
+    position: 'relative',
   },
   '& path': {
     fill: theme('colors.neutral.900'),

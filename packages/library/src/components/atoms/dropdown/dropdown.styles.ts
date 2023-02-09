@@ -2,6 +2,8 @@ import { css, Theme, theme } from 'twind/css';
 
 import { ColourType } from '@sam/types';
 
+import tokens from '../../../styles/tokens';
+
 export const MenuDropdownCss = css({
   position: 'relative',
 });
@@ -59,9 +61,12 @@ export const MenuItemsCss = (colour: string = ColourType.GREY) =>
       display: 'flex',
       alignItems: 'center',
       gap: theme('spacing.8'),
+      width: '100%',
 
       '&:hover::before': {
         backgroundColor: theme('colors.neutral.200'),
+        margin: '-12px -24px',
+        width: 'calc(100% + 48px)',
       },
 
       '& path': {
@@ -71,5 +76,37 @@ export const MenuItemsCss = (colour: string = ColourType.GREY) =>
   });
 
 export const MenuButtonStyles = `
- before:(block absolute -inset-x-24 inset-y-0 opacity-20 content-[''])
+ before:(block absolute inset-y-0 opacity-20 content-[''] w-[full] mx-[-24px] my-[-12px])
 `;
+
+export const TriggerSelectedCss = css({
+  '&': {
+    fontSize: tokens.text.heading[13],
+    lineHeight: tokens.lineHeight.heading[13],
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme('spacing.8'),
+  },
+
+  '& span:nth-child(2)': {
+    height: theme('spacing.24'),
+  },
+
+  '& i': {
+    height: theme('spacing.12'),
+    display: 'flex',
+    alignItems: 'center',
+
+    '& svg': {
+      display: 'inline-block',
+      height: theme('spacing.8'),
+      width: '100%',
+    },
+  },
+});
+
+export const SelectedBoldStyles = `font-bold`;
+
+export const SelectedBackgroundCss = css({
+  '&': {},
+});
