@@ -42,6 +42,9 @@ importers:
   apps/web-app:
     specifiers:
       '@babel/core': ^7.0.0
+      '@sam/library': workspace:*
+      '@sam/types': workspace:*
+      '@twind/next': ^1.0.10
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
@@ -52,12 +55,17 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       tsconfig: workspace:*
+      twind: ^0.16.17
       typescript: ^4.5.3
     dependencies:
+      '@sam/library': link:../../packages/library
+      '@sam/types': link:../../packages/types
+      '@twind/next': 1.0.10_d7041a3caa69fdc49fcbc8e42fda4899
       contentful: 9.3.0
       next: 13.1.6_7a6ce7c903601ca00e748dc002e0c97f
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      twind: 0.16.19_typescript@4.9.5
     devDependencies:
       '@babel/core': 7.20.12
       '@types/node': 17.0.45
@@ -757,6 +765,24 @@ packages:
       typescript:
         optional: true
     dependencies:
+      twind: 0.16.19_typescript@4.9.5
+      typescript: 4.9.5
+    dev: false
+
+  /@twind/next/1.0.10_d7041a3caa69fdc49fcbc8e42fda4899:
+    resolution: {integrity: sha512-6ctrS10JoZNK2NSj8UZ01qsPNIdEF04xZqTAuSLovD+UrMqYo3XYkT2OHovOxSkI+I3Pclx34wdfNWNK+C/+jQ==}
+    engines: {node: '>=10.13'}
+    peerDependencies:
+      next: 10.x || 11.x || 12.x || 13.x
+      react: ^16.6.0 || ^17 || ^18
+      twind: '>=0.15.9 <2'
+      typescript: ^4.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      next: 13.1.6_7a6ce7c903601ca00e748dc002e0c97f
+      react: 18.2.0
       twind: 0.16.19_typescript@4.9.5
       typescript: 4.9.5
     dev: false

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { tw } from 'twind';
 
-import { Languages, Regions } from '@sam/types';
+import { Languages } from '@sam/types';
 
 import {
   Bar,
@@ -9,31 +9,35 @@ import {
   Dropdown,
   MenuItemProps,
   TriggerType,
+  ActiveStyleType,
 } from '../../components';
 import { parseRegion } from '../../lib';
 
-import { WebAppProvider } from './web-app.view-model';
-import { WebAppViewProps } from './web-app.definition';
+import { useWebApp, WebAppProvider } from './web-app.view-model';
+import { WebAppProps } from './web-app.definition';
 
 import * as S from './web-app.styles';
 
-export const WebAppComponent = ({}: WebAppViewProps) => {
+export const WebAppComponent = ({ regions, children }: WebAppProps) => {
+  const { state, handlers } = useWebApp();
+
   const menuItems: MenuItemProps[] = useMemo(() => {
-    return [
-      {
-        text: `${Languages[parseRegion(Regions['en-GB']).languageCode].name} ${
-          parseRegion(Regions['en-GB']).countryCode
+    const items: MenuItemProps[] = [];
+
+    regions.forEach((region) => {
+      items.push({
+        text: `${Languages[parseRegion(region).languageCode].name} ${
+          parseRegion(region).countryCode
         }`,
-        isActive: true,
-      },
-      {
-        text: `${Languages[parseRegion(Regions['en-US']).languageCode].name} ${
-          parseRegion(Regions['en-US']).countryCode
-        }`,
-        isActive: false,
-      },
-    ];
-  }, []);
+        isActive: state.activeRegion === region.iso,
+        activeStyle: [ActiveStyleType.BOLD],
+        onClick: () => handlers.onRegionSelect(region.iso),
+      });
+    });
+
+    return items;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [regions, state.activeRegion]);
 
   return (
     <div className={tw(S.WebAppCss)}>
@@ -47,16 +51,14 @@ export const WebAppComponent = ({}: WebAppViewProps) => {
         </div>
       </Bar>
       <div className={tw(S.ContentCss)}>
-        <Card>
-          <h6>description here</h6>
-        </Card>
+        <Card>{children}</Card>
       </div>
     </div>
   );
 };
 
-export const WebApp = ({}) => (
-  <WebAppProvider>
-    <WebAppComponent />
+export const WebApp = (props: WebAppProps) => (
+  <WebAppProvider dispatches={props.dispatches}>
+    <WebAppComponent {...props} />
   </WebAppProvider>
 );

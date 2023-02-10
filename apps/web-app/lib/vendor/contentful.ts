@@ -15,11 +15,9 @@ const client = createClient({
 
 export const getEntry = async (
   id: string,
-  locale?: string
+  query?: any
 ): Promise<Entry<unknown>> => {
-  const entry = await client.getEntry(id, {
-    locale: 'en-GB',
-  });
+  const entry = await client.getEntry(id, query);
 
   return entry;
 };
