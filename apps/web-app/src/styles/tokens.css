@@ -1,0 +1,201 @@
+/* N.B. Assume `font-size: 16px` Base, Relative Units */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Roboto:400,500,700&display=swap');
+
+@custom-media --desktop (min-width: 1500px);
+
+@custom-media --laptop (min-width: 1024px);
+
+@custom-media --tablet (min-width: 768px);
+
+@custom-media --mobile (max-width: 360px);
+
+:root {
+    /* COLOURS */
+
+    --system-colour-white: #ffffff;
+    --system-colour-beige: #d6d6d2;
+    --system-colour-light-grey-blue: #e0ebf3;
+    --system-colour-dark-grey-blue: #b7cde1;
+    --system-colour-blue: #67acd4;
+    --system-colour-mid-blue: #3178b3;
+    --system-colour-dark-blue: #242f65;
+    --system-colour-navy-black: #0c1839;
+    --system-colour-lime: #c8de9b;
+    --system-colour-pale-lime: #e0edc5;
+    --system-colour-cerise: #df3769;
+    --system-colour-pale-cerise: #ea8ba7;
+    --system-colour-pumpkin: #e35d24;
+    --system-colour-pale-pumpkin: #eb9b79;
+    --system-colour-daffodil: #f6ec31;
+    --system-colour-pale-daffodil: #f5f091;
+    --system-colour-topaz: #8fd9e2;
+    --system-colour-pale-topaz: #c5e6ea;
+    --system-colour-purple: #;
+    --system-colour-pale-purple: #;
+
+    /* RGB */
+
+    --system-rgb-white: 255, 255, 255;
+    --system-rgb-beige: 214, 214, 210;
+    --system-rgb-light-grey-blue: 224, 235, 243;
+    --system-rgb-dark-grey-blue: 183, 205, 225;
+    --system-rgb-blue: 103, 172, 212;
+    --system-rgb-mid-blue: 49, 120, 179;
+    --system-rgb-dark-blue: 36, 47, 101;
+    --system-rgb-navy-black: 12, 24, 57;
+
+    /* BORDERS */
+
+    --border-black: 1px solid #000000;
+    --border-blue: 1px solid #007db5;
+    --border-grey-b: 1px solid #53565a;
+    --border-grey-d: 1px solid #bbbcbc;
+    --border-grey-f: 1px solid #ebebeb;
+
+    /* SHADOWS */
+
+    --highlight: var(--system-rgb-light-grey-blue);
+    --lowlight: var(--system-rgb-navy-black);
+
+    --shadow-inset-a: -2.5px -2.5px 5px rgba(var(--highlight), 1) inset,
+        2.5px 2.5px 5px rgba(var(--lowlight), 0.23) inset;
+    --shadow-inset-b: -5px -5px 10px rgba(var(--highlight), 1) inset,
+        5px 5px 10px rgba(var(--lowlight), 0.23) inset;
+
+    --shadow-raised-a: -2.5px -2.5px 5px rgba(var(--highlight), 1),
+        2.5px 2.5px 5px rgba(var(--lowlight), 0.23);
+    --shadow-raised-b: -5px -5px 10px rgba(var(--highlight), 1),
+        5px 5px 10px rgba(var(--lowlight), 0.23);
+    --shadow-raised-c: -10px -10px 20px rgba(var(--highlight), 1),
+        10px 10px 20px rgba(var(--lowlight), 0.23);
+    --shadow-raised-d: -20px -20px 40px rgba(var(--highlight), 1),
+        20px 20px 40px rgba(var(--lowlight), 0.23);
+
+    /* TYPOGRAPHY */
+
+    /* HEADINGS */
+
+    --heading-font-size-banner: 2.1875rem; /* 35 */
+    --heading-line-height-banner: 2.5rem; /* 40 */
+    --heading-font-kerning-banner: 0;
+
+    --heading-font-size-h1: 3rem; /* 48 */
+    --heading-line-height-h1: 4rem; /* 64 */
+    --heading-font-kerning-h1: 0;
+
+    --heading-font-size-h2: 2.75rem; /* 44 */
+    --heading-line-height-h2: 3.75rem; /* 60 */
+    --heading-font-kerning-h2: 0;
+
+    --heading-font-size-h3: 2rem; /* 32 */
+    --heading-line-height-h3: 2.5rem; /* 40 */
+    --heading-font-kerning-h3: 0;
+
+    --heading-font-size-h4: 1.5rem; /* 24 */
+    --heading-line-height-h4: 2rem; /* 32 */
+    --heading-font-kerning-h4: 0;
+
+    --heading-font-size-h5: 1.25rem; /* 20 */
+    --heading-line-height-h5: 1.75rem; /* 28 */
+    --heading-font-kerning-h5: 0;
+
+    --heading-font-size-h6: 1rem; /* 16 */
+    --heading-line-height-h6: 1.5rem; /* 24 */
+    --heading-font-kerning-h6: 0;
+
+    @media (--tablet) {
+        --heading-font-size-banner: 2.5rem;
+        --heading-line-height-banner: 2.5rem;
+
+        --heading-font-size-h1: 4rem;
+        --heading-line-height-h1: 5rem;
+
+        --heading-font-size-h2: 3.5rem;
+        --heading-line-height-h2: 4.5rem;
+
+        --heading-font-size-h3: 3rem;
+        --heading-line-height-h3: 3.5rem;
+    }
+
+    @media (--laptop) {
+        --heading-font-size-h1: 5rem;
+        --heading-line-height-h1: 6rem;
+
+        --heading-font-size-h2: 4rem;
+        --heading-line-height-h2: 5rem;
+
+        --heading-font-size-h3: 3rem;
+        --heading-line-height-h3: 4rem;
+
+        --heading-font-size-h6: 0.9rem;
+        --heading-line-height-h6: 1.9rem;
+    }
+
+    /* BODY */
+
+    --body-font-size-large: 1.4rem; /* 22.4 */
+    --body-font-size-standard: 1rem; /* 16 */
+    --body-font-size-small: 0.8rem; /* 14 */
+
+    --body-line-height-large: 1.9rem; /* 30.4 */
+    --body-line-height-standard: 1.5rem; /* 24 */
+    --body-line-height-small: 1.3rem; /* 21 */
+
+    /* CAPTIONS */
+
+    --caption-font-size-small: 0.6875rem;
+    --caption-font-size-standard: 0.75rem;
+
+    --caption-line-height-small: 1.03125rem;
+    --caption-line-height-standard: 1.125rem;
+
+    /* WEIGHT */
+
+    --font-weight-regular: 400;
+    --font-weight-semi-bold: 500;
+    --font-weight-bold: 700;
+
+    --font-family-montserrat: Montserrat, sans-serif;
+    --font-family-roboto: Roboto, sans-serif;
+    --font-family-great-vibes: 'Great Vibes', cursive;
+    --font-family-lato: 'Lato', sans-serif;
+
+    /* STYLES */
+
+    /* ROUNDED CORNERS */
+
+    --rounded-corners-standard: 4px;
+    --rounded-corners-button: 5rem;
+
+    /* BOX SHADOWS */
+
+    --box-shadow-small: 0 4px 15px 0 rgba(0, 0, 0, 0.1);
+    --box-shadow-large: 0 4px 60px 0 rgba(0, 0, 0, 0.1);
+
+    /* FROSTED GLASS */
+
+    --glass-dark-background-color: rgba(0, 0, 0, 0.8);
+    --glass-light-background-color: rgba(255, 255, 255, 0.5);
+    --glass-backdrop-filter: blur(50px);
+
+    /* SPACING */
+
+    --spacing-2: 0.125rem;
+    --spacing-4: 0.25rem;
+    --spacing-8: 0.5rem;
+    --spacing-12: 0.75rem;
+    --spacing-16: 1rem;
+    --spacing-20: 1.25rem;
+    --spacing-24: 1.5rem;
+    --spacing-32: 2rem;
+    --spacing-40: 2.5rem;
+    --spacing-48: 3rem;
+    --spacing-56: 3.5rem;
+    --spacing-60: 3.75rem;
+    --spacing-64: 4rem;
+    --spacing-80: 5rem;
+    --spacing-100: 6.25rem;
+    --spacing-120: 7.5rem;
+    --spacing-160: 10rem;
+    --spacing-800: 50rem;
+}

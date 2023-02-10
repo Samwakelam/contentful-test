@@ -1,0 +1,66 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+h4,
+h3,
+h5,
+h6 {
+  font-family: var(--font-family-roboto);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  font-family: var(--font-family-montserrat);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: var(--heading-font-size-h1);
+  line-height: var(--heading-line-height-h1);
+}
+
+h2 {
+  font-size: var(--heading-font-size-h2);
+  line-height: var(--heading-line-height-h2);
+  /* background-image: linear-gradient(
+        270deg,
+        var(--system-colour-mid-blue),
+        var(--system-colour-dark-grey-blue)
+    ); */
+  background-image: url('/img/dark-rose-quartz-texture-mobile.jpg');
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 1rem;
+}
+
+h3 {
+  font-size: var(--heading-font-size-h3);
+  line-height: var(--heading-line-height-h3);
+}
+
+h4 {
+  font-size: var(--heading-font-size-h4);
+  line-height: var(--heading-line-height-h4);
+}
+
+h5 {
+  font-size: var(--heading-font-size-h5);
+  line-height: var(--heading-line-height-h5);
+}
+
+h6 {
+  font-size: var(--heading-font-size-h6);
+  line-height: var(--heading-line-height-h6);
+}
+
+p {
+  font-family: var(--font-family-lato);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--body-font-size-standard);
+  line-height: var(--body-line-height-standard);
+}
