@@ -14,6 +14,7 @@ export const BoxCss: Directive<CSSRules> = css({
   '&': {
     display: 'flex',
     alignItems: 'center',
+    gap: theme('spacing.8'),
   },
 });
 

@@ -51,6 +51,7 @@ export type DropdownState = {
 };
 
 export type DropdownHandlers = {
+  onClose: () => void;
   resolveTriggerButton: (triggerType: TriggerType) => ButtonProps | null;
   handleClickOutside: (event: MouseEvent) => void;
 };

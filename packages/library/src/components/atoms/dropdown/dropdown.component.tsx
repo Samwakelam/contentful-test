@@ -61,7 +61,7 @@ export const Dropdown = ({
                 buttonVariant={ButtonVariant.NONE}
                 onClick={(e: any) => {
                   menuItem.onClick && menuItem.onClick();
-                  handlers.handleClickOutside(e);
+                  handlers.onClose();
                 }}
                 startIcon={menuItem.icon}
               >

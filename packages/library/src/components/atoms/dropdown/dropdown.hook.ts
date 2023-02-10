@@ -27,6 +27,10 @@ export const useDropdown = (
 
   const currentMenuItem = menuItems.find((item) => item.isActive);
 
+  const onClose = () => {
+    setState((prev) => ({ ...prev, isActive: false }));
+  };
+
   const handleClickOutside: DropdownHandlers['handleClickOutside'] = (
     event
   ) => {
@@ -38,7 +42,7 @@ export const useDropdown = (
       !contentRef.current.contains(event.target as Node) &&
       !buttonRef.current.contains(event.target as Node)
     ) {
-      setState((prev) => ({ ...prev, isActive: false }));
+      onClose();
     }
   };
 
@@ -112,6 +116,7 @@ export const useDropdown = (
   return {
     state,
     handlers: {
+      onClose,
       handleClickOutside,
       resolveTriggerButton,
     },
