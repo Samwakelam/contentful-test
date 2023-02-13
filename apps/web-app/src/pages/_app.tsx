@@ -20,7 +20,10 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       <Head>
         <title>Contentful Test</title>
       </Head>
-      <div className={tw(globalStyles)}>
+      <div
+        className={tw(globalStyles)}
+        style={{ height: '100%', width: '100%' }}
+      >
         <Component {...pageProps} />
       </div>
     </>

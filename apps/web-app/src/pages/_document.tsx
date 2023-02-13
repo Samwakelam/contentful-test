@@ -1,9 +1,9 @@
-import Document, { Html, Main, Head, NextScript } from 'next/document';
+import NextDocument, { Html, Main, Head, NextScript } from 'next/document';
 import withTwindDocument from '@twind/next/document';
 
 import themeConfig from '../twind.config';
 
-class MyDocument extends Document {
+class Document extends NextDocument {
   render(): JSX.Element {
     return (
       <Html>
@@ -17,4 +17,4 @@ class MyDocument extends Document {
   }
 }
 
-export default withTwindDocument(themeConfig, MyDocument);
+export default withTwindDocument(themeConfig, Document);
