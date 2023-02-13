@@ -11,7 +11,7 @@ import themeConfig from '../twind.config';
 
 import '../styles/reset.css';
 
-function App({ Component, pageProps }: AppProps): JSX.Element {
+function App({ Component, pageProps }: any): JSX.Element {
   setup(themeConfig);
   registerWidgets();
 
@@ -20,7 +20,10 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       <Head>
         <title>Contentful Test</title>
       </Head>
-      <div className={tw(globalStyles)}>
+      <div
+        className={tw(globalStyles)}
+        style={{ height: '100%', width: '100%' }}
+      >
         <Component {...pageProps} />
       </div>
     </>
