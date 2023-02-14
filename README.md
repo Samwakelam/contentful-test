@@ -8,7 +8,7 @@ The purpose of this mini project is to demonstrate and test the knowledge within
 
 - [Javascript SDK](https://github.com/contentful/contentful.js)
 - [Contentful App SDK](https://www.contentful.com/developers/docs/extensibility/app-framework/sdk/)
-- React SDK
+- [React SDK](https://www.npmjs.com/package/@contentful/react-apps-toolkit)
 
 There are also a number of different [Contentful content APIs](https://www.contentful.com/developers/docs/concepts/apis/#:~:text=If%20you're%20retrieving%20content,use%20the%20Content%20Management%20API.):
 
@@ -93,5 +93,6 @@ Contenful appSDK provides locations for the contentful app space. I have set up 
 **Issues:**
 
 - Typescript errors on the KnownSDK type pre-determined by the create-contentful-app. I have had to //@ts-ignore.
+- Webb App Component is throwing a wobbly?
 
 ### 6. Creating an App

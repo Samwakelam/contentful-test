@@ -18,7 +18,8 @@ import fixture9 from './../__fixtures__/forms/atoms/input.fixture.tsx';
 import fixture10 from './../__fixtures__/forms/atoms/toggle.fixture.tsx';
 import fixture11 from './../__fixtures__/forms/molecules/checkbox-group.fixture.tsx';
 import fixture12 from './../__fixtures__/forms/molecules/input-group.fixture.tsx';
-import fixture13 from './../__fixtures__/views/web-app.fixture.tsx';
+import fixture13 from './../__fixtures__/views/contenful-app.fixture.tsx';
+import fixture14 from './../__fixtures__/views/web-app.fixture.tsx';
 
 import decorator0 from './../__fixtures__/cosmos.decorator.tsx';
 
@@ -40,7 +41,8 @@ export const fixtures = {
   '__fixtures__/forms/atoms/toggle.fixture.tsx': { module: { default: fixture10 } },
   '__fixtures__/forms/molecules/checkbox-group.fixture.tsx': { module: { default: fixture11 } },
   '__fixtures__/forms/molecules/input-group.fixture.tsx': { module: { default: fixture12 } },
-  '__fixtures__/views/web-app.fixture.tsx': { module: { default: fixture13 } }
+  '__fixtures__/views/contenful-app.fixture.tsx': { module: { default: fixture13 } },
+  '__fixtures__/views/web-app.fixture.tsx': { module: { default: fixture14 } }
 };
 
 export const decorators = {

@@ -1,7 +1,8 @@
-import { PageExtensionSDK } from '@contentful/app-sdk';
-import { Paragraph } from '@contentful/f36-components';
-import { /* useCMA, */ useSDK } from '@contentful/react-apps-toolkit';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { PageExtensionSDK } from '@contentful/app-sdk';
+import { /* useCMA, */ useSDK } from '@contentful/react-apps-toolkit';
+
+import { ContentfulApp } from '@sam/library';
 
 const Page = () => {
   //@ts-ignore
@@ -15,14 +16,7 @@ const Page = () => {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Paragraph>
-              Hello Sam Page Component (AppId: {sdk.ids.app})
-            </Paragraph>
-          }
-        />
+        <Route path="/" element={<ContentfulApp />} />
       </Routes>
     </Router>
   );
