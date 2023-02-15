@@ -1,7 +1,10 @@
+import { Widget } from '@sam/types';
+
 export type ContentfulAppProps = {};
 
 export type ContentfulAppState = {
   isModalOpen: boolean;
+  widgets: Widget[];
 };
 
 export type ContentfulAppHandlers = {

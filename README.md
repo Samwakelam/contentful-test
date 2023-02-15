@@ -20,7 +20,7 @@ There are also a number of different [Contentful content APIs](https://www.conte
 
 #### Management API
 
-- If you want to programmatically create or update content items, use the Content Management API.
+- If you want to programmatically create or update content items, use the [Contentful Management API](https://github.com/contentful/contentful-management.js/tree/legacy).
 - A read-write api to create custom editing experiences (this is what Content Platform are using).
 - It will retrieve all items; localised and unpublished.
 
@@ -67,7 +67,7 @@ I have printed the entry types in the console for now.
 
 ### 4. Received data through contentful
 
-In the `getServerSideProps` function, I have retrieved my entry by id but also queried for all locals using the wildecard '\*'. This gives me the object with the fields localized:
+In the `getServerSideProps` function, I have retrieved my entry by id but also queried for all locales using the wildecard '\*'. This gives me the object with the fields localized:
 
 ```
 {
@@ -96,3 +96,33 @@ Contenful appSDK provides locations for the contentful app space. I have set up 
 - Webb App Component is throwing a wobbly?
 
 ### 6. Creating an App
+
+Created a basic view that will enable editing, creating and updating of models in contentful. Basic view consists of test data and an input modal for creation. Next steps are to connect up contentful using the sdk and contentful manager in the library package.
+
+content-manager will help with creating a service where we can define adding the data back into the contentful system.
+
+I have created a service class to manipulate the data coming out of contentful, transforming it into a structure I wish to use in my app.
+
+Setting up the client in a separate package inline with Dependency Injection, I have created the client.
+
+I can pull the sdk from the `@contentful/app-sdk`. This gives me complete access to our space.
+
+> Note:
+>
+> Since the app is installed in a specific environment of a space, it can only access entities within that environment.
+
+I 'can' do .space.getEntries({...}) from here, but a warning is presented in the console:
+
+> Warning:
+>
+> You called getEntries on the Space API. Since version 4.0.0 the Space API and its methods are deprecated, and they will be removed from version 5.0.0 on. We recommend that you use the CMA client instead.
+
+For this reason I am following the 'Using the contentful-management library' which [we know](#management-api) can update and create contentful items.
+
+Once the cma Client is set up you need to get the space (top level container for all other resources) and then the environment (contains methods to access any operations at a space level) which provides you access to the getEntries methods and other CRUD operations.
+
+##### Useful Links
+
+- [Contentful Environment API](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/ContentfulEnvironmentAPI.html)
+- [ContentfulSpaceAPI](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/ContentfulSpaceAPI.html)
+- [API documentation](https://github.com/contentful/contentful-management.js/tree/legacy#api)

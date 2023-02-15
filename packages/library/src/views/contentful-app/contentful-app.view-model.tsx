@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { EntryService } from '@sam/contentful';
+import { useCallback, useEffect, useState } from 'react';
 import { createContext, ReactElement, useContext } from 'react';
 import {
   ContentfulAppContextProps,
@@ -8,6 +9,7 @@ import {
 
 const initialState: ContentfulAppState = {
   isModalOpen: false,
+  widgets: [],
 };
 
 export const ContentfulAppContext = createContext<ContentfulAppContextProps>({
@@ -21,6 +23,8 @@ export const ContentfulAppContext = createContext<ContentfulAppContextProps>({
 export const useContentfulApp = (): ContentfulAppContextProps => {
   return useContext(ContentfulAppContext);
 };
+
+const Store = new EntryService();
 
 export const ContentfulAppProvider = ({
   children,
@@ -36,6 +40,37 @@ export const ContentfulAppProvider = ({
   const closeModal: ContentfulAppHandlers['closeModal'] = () => {
     setState((prev) => ({ ...prev, isModalOpen: false }));
   };
+
+  const fetchEntries = useCallback(async () => {
+    const entries = await Store.getAll({
+      locale: '*',
+      content_type: 'samTestModel',
+    });
+
+    const parsed = entries.map((entry) => {
+      const { sys, fields } = entry;
+
+      const properties = Object.entries(fields)
+        .map(([key, value]) => [key, value])
+        .reduce((obj, _entry: any[]) => {
+          // @ts-ignore
+          obj[_entry[0]] = _entry[1];
+          return obj;
+        }, {});
+
+      return {
+        _template: sys.contentType.sys.id,
+        id: sys.id,
+        ...properties,
+      };
+    });
+
+    setState((prev) => ({ ...prev, widgets: parsed }));
+  }, []);
+
+  useEffect(() => {
+    fetchEntries();
+  }, []);
 
   return (
     <ContentfulAppContext.Provider

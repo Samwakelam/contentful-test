@@ -1,6 +1,8 @@
 import { tw } from 'twind';
 
-import { Button, Card, Modal, Placeholder } from '../../components';
+import { EntryService } from '@sam/contentful';
+
+import { Button, Modal, Placeholder } from '../../components';
 
 import { ContentfulAppProps } from './contentful-app.definition';
 import {
@@ -10,17 +12,19 @@ import {
 import { AddModelModal } from '../../components/molecules/add-model';
 
 import * as S from './contentful-app.styles';
+import { renderWidgets } from './_partials/renderer';
 
 export const ContentfulAppComponent = ({}: ContentfulAppProps) => {
   const { state, handlers } = useContentfulApp();
 
+  const entryService = new EntryService();
+  const test = async () => {
+    return await entryService.getAll();
+  };
+
   return (
     <div className={tw(S.ContentfulAppCss)}>
-      <div className={tw(S.ColumnCss)}>
-        <Card>
-          <h3> Test </h3>
-        </Card>
-      </div>
+      <div className={tw(S.ColumnCss)}>{renderWidgets(state.widgets)}</div>
       <div className={tw(S.ColumnCss)}>
         <Placeholder className={tw(S.PlaceholderCss)}>
           <Button

@@ -96,6 +96,29 @@ importers:
       tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
+  packages/contentful:
+    specifiers:
+      '@contentful/app-sdk': 4.13.0
+      '@contentful/react-apps-toolkit': 1.2.2
+      '@types/react': ^18.0.28
+      '@types/react-dom': ^18.0.10
+      contentful-management: 10.7.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      tsconfig: workspace:*
+      typescript: ^4.9.5
+    dependencies:
+      '@contentful/app-sdk': 4.13.0_contentful-management@10.7.0
+      '@contentful/react-apps-toolkit': 1.2.2_react@18.2.0
+      contentful-management: 10.7.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    devDependencies:
+      '@types/react': 18.0.28
+      '@types/react-dom': 18.0.10
+      tsconfig: link:../tsconfig
+      typescript: 4.9.5
+
   packages/eslint-config-custom:
     specifiers:
       eslint: ^7.23.0
@@ -139,6 +162,7 @@ importers:
 
   packages/library:
     specifiers:
+      '@sam/contentful': workspace:*
       '@sam/icons': workspace:*
       '@sam/theme': workspace:*
       '@sam/types': workspace:*
@@ -165,6 +189,7 @@ importers:
       vitest: ^0.24.5
       webpack: ^5.74.0
     dependencies:
+      '@sam/contentful': link:../contentful
       '@sam/icons': link:../icons
       '@sam/theme': link:../theme
       '@sam/types': link:../types
@@ -1082,6 +1107,18 @@ packages:
       - debug
     dev: false
 
+  /@contentful/react-apps-toolkit/1.2.2_react@18.2.0:
+    resolution: {integrity: sha512-ne2JiuirDivZsypwyiX8KYEhY2OPiv5u2h241KtnBLv1vLH7zCH3f3F0RklJrgwF6iTvOeq/kjVr3Va9rUJWdg==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      '@contentful/app-sdk': 4.16.0_contentful-management@10.29.1
+      contentful-management: 10.29.1
+      react: 18.2.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /@contentful/rich-text-types/16.0.2:
     resolution: {integrity: sha512-ovbmCKQjlyGek4NuABoqDesC3FBV3e5jPMMdtT2mpOy9ia31MKO0NSFMRGZu7Q+veZzmDMja8S1i/XeFCUT9Pw==}
     engines: {node: '>=6.0.0'}
@@ -1769,7 +1806,7 @@ packages:
   /@types/react-dom/18.0.10:
     resolution: {integrity: sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==}
     dependencies:
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
     dev: true
 
   /@types/react-modal/3.13.1:
@@ -1799,6 +1836,14 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.1.1
+
+  /@types/react/18.0.28:
+    resolution: {integrity: sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.1.1
+    dev: true
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
