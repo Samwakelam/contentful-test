@@ -8,6 +8,7 @@ import {
   Modal,
 } from '../../../../components';
 import { useContentfulApp } from '../../contentful-app.view-model';
+import { Tag } from '../tag';
 
 import { EditorProps } from './editor.definition';
 
@@ -17,10 +18,11 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
   const { state, handlers } = useContentfulApp();
 
   return (
-    <div
-      className={tw(S.EditorCss)}
-      onClick={() => console.log('id: ', widgetId)}
-    >
+    <div className={tw(S.EditorCss)}>
+      <Tag
+        published={handlers.resolvePublishedState(widgetId)}
+        className={tw(S.TagCss)}
+      />
       <div className={tw(S.ButtonBoxCss)}>
         <Button
           icon={{ icon: 'pencil', ariaLabel: 'edit' }}
@@ -32,6 +34,23 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
           buttonVariant={ButtonVariant.PRIMARY}
           onClick={() => handlers.onModalAction(`delete-${widgetId}`)}
         />
+        {handlers.resolvePublishedState(widgetId) ? (
+          <Button
+            startIcon={{ icon: 'cross', ariaLabel: 'un-publish' }}
+            className={tw(S.UnPublishButtonCss)}
+            onClick={(e) => handlers.onUnPublish(e, widgetId)}
+          >
+            UnPublish
+          </Button>
+        ) : (
+          <Button
+            startIcon={{ icon: 'tick', ariaLabel: 'publish' }}
+            buttonVariant={ButtonVariant.SUCCESS}
+            onClick={(e) => handlers.onPublish(e, widgetId)}
+          >
+            Publish
+          </Button>
+        )}
       </div>
       {children}
       <Modal

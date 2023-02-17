@@ -25,6 +25,23 @@ export const ButtonBoxCss = css({
   },
 });
 
-export const ButtonCss = css({
-  '&': {},
+export const UnPublishButtonCss = css({
+  '&': {
+    backgroundColor: theme('colors.orange.400'),
+    color: theme('colors.neutral.50'),
+  },
+  '&:hover': {
+    backgroundColor: theme('colors.orange.500'),
+  },
+  '& path': {
+    fill: theme('colors.neutral.50'),
+  },
+});
+
+export const TagCss = css({
+  '&': {
+    position: 'absolute',
+    top: theme('spacing.8'),
+    right: theme('spacing.8'),
+  },
 });

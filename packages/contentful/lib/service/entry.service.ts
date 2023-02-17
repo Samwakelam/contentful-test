@@ -66,8 +66,28 @@ export class EntryService {
     }
   }
 
-  async publish() {
-    const environment = await getEnvironment();
+  async publish(id: string, query?: QueryOptions) {
+    try {
+      const entry = await this.get(id, query);
+
+      const result = await entry.publish();
+
+      return result;
+    } catch (error) {
+      throw new Error(`EntryService del: ${error}`);
+    }
+  }
+
+  async unPublish(id: string, query?: QueryOptions) {
+    try {
+      const entry = await this.get(id, query);
+
+      const result = await entry.unpublish();
+
+      return result;
+    } catch (error) {
+      throw new Error(`EntryService del: ${error}`);
+    }
   }
 
   async locales() {
@@ -78,3 +98,5 @@ export class EntryService {
     return locales;
   }
 }
+
+export type { Entry } from 'contentful-management';
