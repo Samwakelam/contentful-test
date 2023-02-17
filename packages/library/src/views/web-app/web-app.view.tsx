@@ -50,9 +50,7 @@ export const WebAppComponent = ({ regions, children }: WebAppProps) => {
           />
         </div>
       </Bar>
-      <div className={tw(S.ContentCss)}>
-        <Card>{children}</Card>
-      </div>
+      <div className={tw(S.ContentCss)}>{children}</div>
     </div>
   );
 };

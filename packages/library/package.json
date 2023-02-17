@@ -35,15 +35,17 @@
     "ts-mockito": "^2.6.1",
     "typescript": "^4.8.4",
     "vite": "^3.2.2",
-    "vitest": "^0.24.5",
     "vite-tsconfig-paths": "^4.0.3",
+    "vitest": "^0.24.5",
     "webpack": "^5.74.0"
   },
   "dependencies": {
+    "@sam/contentful": "workspace:*",
     "@sam/icons": "workspace:*",
     "@sam/theme": "workspace:*",
     "@sam/types": "workspace:*",
     "@twind/content": "^0.1.0",
+    "contentful": "^9.3.0",
     "tailwind-colors": "^1.1.0",
     "tailwind-merge": "^1.8.0",
     "twind": "^0.16.17"

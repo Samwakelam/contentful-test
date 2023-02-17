@@ -1,6 +1,5 @@
-import React from 'react';
-
-export interface SamTestModelProps extends React.FC {
+export type SamTestModelProps = {
   name: string;
   description: string;
-}
+  id: string;
+};

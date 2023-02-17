@@ -13,7 +13,7 @@ const applications = {
 const Home = () => {
   //@ts-ignore
   const sdk = useSDK<HomeExtensionSDK>();
-  console.log('sdk: ', sdk);
+
   /*
      To use the cma, inject it as follows.
      If it is not needed, you can remove the next line.

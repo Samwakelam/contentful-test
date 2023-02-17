@@ -1,9 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 /* eslint-disable react/display-name */
 
-import { WebApp } from '../../src/views/web-app';
-
 import { RegionCode } from '@sam/types';
+
+import { WebApp } from '../../src/views/web-app';
+import { Card } from '../../src';
 
 export default () => (
   <WebApp
@@ -15,6 +16,8 @@ export default () => (
     ]}
     dispatches={{ selectedRegion: () => {} }}
   >
-    <h1>Test Card</h1>
+    <Card>
+      <h1>Test Card</h1>
+    </Card>
   </WebApp>
 );

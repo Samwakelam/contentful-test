@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { ReactElement } from 'react';
 import { useSelect } from 'react-cosmos/fixture';
 

@@ -16,10 +16,10 @@ export default defineConfig((_: ConfigEnv) => {
     plugins: [react()],
     resolve: {
       alias: [
-        {
-          find: /(.*).service/,
-          replacement: isDevelop ? '$1.mock' : '$1.service',
-        },
+        // {
+        //   find: /(.*).service/,
+        //   replacement: isDevelop ? '$1.mock' : '$1.service',
+        // },
       ],
     },
     // @ts-ignore
