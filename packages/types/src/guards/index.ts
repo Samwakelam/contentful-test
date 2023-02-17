@@ -1,1 +1,1 @@
-export {};
+export * from './is-widget.guard';

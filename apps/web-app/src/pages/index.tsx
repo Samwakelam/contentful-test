@@ -1,20 +1,24 @@
 import { GetServerSidePropsContext } from 'next';
-import { Entry } from 'contentful';
 import { useState } from 'react';
 
-import { WebApp, WebAppProps, renderWidget, parseEntry } from '@sam/library';
+import {
+  WebApp,
+  WebAppProps,
+  renderWidget,
+  parseEntry,
+  renderWidgets,
+} from '@sam/library';
 import { RegionCode, Regions, Widget } from '@sam/types';
 
-import { getEntry, getLocales } from '../../lib';
+import { getEntries, getEntry, getLocales } from '../../lib';
 
 type IndexProps = {
-  entry: Entry<any>;
+  widgets: any[];
   regions: string[];
   defaultLocale: string | undefined;
 };
 
-const Index = ({ entry, regions, defaultLocale }: IndexProps) => {
-  const widget: Widget = parseEntry(entry);
+const Index = ({ widgets, regions, defaultLocale }: IndexProps) => {
   const [selectedRegion, setSelectedRegion] = useState(defaultLocale);
 
   const webApp: Omit<WebAppProps, 'children'> = {
@@ -25,8 +29,8 @@ const Index = ({ entry, regions, defaultLocale }: IndexProps) => {
   return (
     <WebApp {...webApp}>
       <>
-        {renderWidget(
-          widget,
+        {renderWidgets(
+          widgets,
           selectedRegion as RegionCode,
           defaultLocale as RegionCode
         )}
@@ -40,10 +44,13 @@ export default Index;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ): Promise<{ props: IndexProps }> => {
-  const entry = await getEntry('1wWZD3Yq061T5pnBNnzECU', {
+  const entries = await getEntries({
     locale: '*',
     content_type: 'samTestModel',
   });
+  console.log('entries: ', entries);
+
+  const widgets = [...entries.items];
 
   const locales = await getLocales();
   const regions = locales.items.map((locale) => locale.code);
@@ -51,7 +58,7 @@ export const getServerSideProps = async (
 
   return {
     props: {
-      entry,
+      widgets,
       regions,
       defaultLocale,
     },
