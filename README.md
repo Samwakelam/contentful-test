@@ -131,7 +131,7 @@ Once the cma Client is set up you need to get the space (top level container for
 
 This was reasonably simple, you must pass the `fields` prop to `createEntry()` method on the environment object, where fields is an object of the components props. The rest of the entry is created automatically.
 
-Gotcha, the locales are not set here. You can pass in an object with the locale keys and it will save it, but showing the available and set options in contentful is currently managed manually.
+**Gotcha**, the locales are not set here. You can pass in an object with the locale keys and it will save it, but showing the available and set options in contentful is currently managed manually.
 
 Creating an Entry does not release the Entries to the web app as these are unpublished in the contentful system. To view a preview of the unpublished Entries, we would need to use the [Preview API](#preview-api).
 

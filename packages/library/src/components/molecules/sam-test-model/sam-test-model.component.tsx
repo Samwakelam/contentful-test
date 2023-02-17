@@ -15,8 +15,8 @@ export const SamTestModel = ({
   return (
     <Card>
       <div className={tw(S.SamTestModelCss)}>
-        <p>ID: {id}</p>
         <p>{description}</p>
+        <p>ID: {id}</p>
       </div>
     </Card>
   );
