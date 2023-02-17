@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { Card } from '../../../src/components/atoms/card/card.component';
 
 const CardFixture = () => {

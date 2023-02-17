@@ -1,4 +1,4 @@
-import { registerWidgets } from './_partials/renderer';
+import { registerWidgets } from '../../lib';
 
 registerWidgets();
 

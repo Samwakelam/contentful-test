@@ -37,3 +37,12 @@ export const PlaceholderCss = css({
     paddingRight: theme('spacing.32'),
   },
 });
+
+export const ColumnOneCss = css({
+  '&': {
+    display: 'flex',
+    flexFlow: 'column',
+    gap: theme('spacing.24'),
+    overflowY: 'auto',
+  },
+});

@@ -4,9 +4,8 @@ import Head from 'next/head';
 import { setup, tw } from 'twind';
 import withTwindApp from '@twind/next/app';
 
-import { globalStyles } from '@sam/library';
+import { globalStyles, registerWidgets } from '@sam/library';
 
-import { registerWidgets } from '../../lib/parsers/parse-widgets';
 import themeConfig from '../twind.config';
 
 import '../styles/reset.css';

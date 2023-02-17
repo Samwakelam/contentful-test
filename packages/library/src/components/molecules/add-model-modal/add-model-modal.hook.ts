@@ -4,13 +4,19 @@ import { Hook } from '@sam/types';
 
 import {
   AddModelModalHandlers,
+  AddModelModalProps,
   AddModelModalState,
-} from './add-model.definition';
+} from './add-model-modal.definition';
 import { useInputGroup, Validators } from '../../../forms';
+import { ModuleCache } from 'vitest';
+import { ModelProps } from '../../../views';
 
-export const useAddModelModal = (
-  onClose: () => void
-): Hook<AddModelModalState, AddModelModalHandlers> => {
+export const useAddModelModal = ({
+  onClose,
+  dispatches,
+}: AddModelModalProps): Hook<AddModelModalState, AddModelModalHandlers> => {
+  const { onAdd } = dispatches;
+
   const [state, setState] = useState<
     Omit<
       AddModelModalState,
@@ -46,7 +52,7 @@ export const useAddModelModal = (
     ],
   ]);
 
-  const onCreate: AddModelModalHandlers['onCreate'] = (e) => {
+  const onCreate: AddModelModalHandlers['onCreate'] = async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -55,7 +61,33 @@ export const useAddModelModal = (
     const nameValue = nameInput.state.value;
     const usDescValue = usDescriptionInput.state.value;
     const gbDescValue = gbDescriptionInput.state.value;
+
+    const model: ModelProps = {
+      name: { 'en-US': nameValue },
+      description: { 'en-US': usDescValue },
+    };
+
+    if (gbDescValue) {
+      model.description['en-GB'] = gbDescValue;
+    }
+
+    await onAdd(model, () => {});
+
+    setState((prev) => ({ ...prev, isProcessing: false }));
+    onClose();
   };
+
+  const resolveIsButtonDisabled: AddModelModalHandlers['resolveIsButtonDisabled'] =
+    () => {
+      const valid =
+        nameInput.state.isValid &&
+        usDescriptionInput.state.isValid &&
+        gbDescriptionInput.state.isValid;
+
+      const hasValues = nameInput.state.value && usDescriptionInput.state.value;
+
+      return !valid && !hasValues;
+    };
 
   return {
     state: {
@@ -66,6 +98,7 @@ export const useAddModelModal = (
     },
     handlers: {
       onCreate,
+      resolveIsButtonDisabled,
     },
   };
 };

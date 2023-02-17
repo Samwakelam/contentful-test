@@ -126,3 +126,15 @@ Once the cma Client is set up you need to get the space (top level container for
 - [Contentful Environment API](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/ContentfulEnvironmentAPI.html)
 - [ContentfulSpaceAPI](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/ContentfulSpaceAPI.html)
 - [API documentation](https://github.com/contentful/contentful-management.js/tree/legacy#api)
+
+7. Create an Entry
+
+This was reasonably simple, you must pass the `fields` prop to `createEntry()` method on the environment object, where fields is an object of the components props. The rest of the entry is created automatically.
+
+Gotcha, the locales are not set here. You can pass in an object with the locale keys and it will save it, but showing the available and set options in contentful is currently managed manually.
+
+Creating an Entry does not release the Entries to the web app as these are unpublished in the contentful system. To view a preview of the unpublished Entries, we would need to use the [Preview API](#preview-api).
+
+8. Delete an Entry
+
+You get an entry and apply the `delete()` method. This is throwing an error in my service. I have suspicions that the id is not accurate.

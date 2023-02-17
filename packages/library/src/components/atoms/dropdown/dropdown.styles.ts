@@ -31,6 +31,7 @@ export const MenuListCss = (stackPosition: 'left' | 'right' = 'left') =>
       left: stackPosition === 'left' ? 0 : 'unset',
       display: 'none',
       flexFlow: 'column',
+      zIndex: 5,
     },
   });
 
@@ -76,7 +77,7 @@ export const MenuItemsCss = (colour: string = ColourType.GREY) =>
   });
 
 export const MenuButtonStyles = `
- before:(block absolute inset-y-0 opacity-20 content-[''] w-[full] mx-[-24px] my-[-12px])
+ before:(block absolute inset-y-0 opacity-20 content-[''] w-full mx-[-24px] my-[-12px])
 `;
 
 export const TriggerSelectedCss = css({

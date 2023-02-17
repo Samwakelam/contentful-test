@@ -1,0 +1,30 @@
+import { css, theme } from 'twind/css';
+
+export const EditorCss = css({
+  '&': {
+    position: 'relative',
+    borderColor: theme('colors.teal.400'),
+    borderStyle: 'solid',
+    borderRadius: theme('spacing.4'),
+    borderWidth: theme('spacing.4'),
+    paddingLeft: theme('spacing.16'),
+    paddingTop: theme('spacing.16'),
+    paddingRight: theme('spacing.16'),
+    paddingBottom: theme('spacing.32'),
+    backgroundColor: theme('colors.teal.50'),
+  },
+});
+
+export const ButtonBoxCss = css({
+  '&': {
+    position: 'absolute',
+    display: 'flex',
+    gap: theme('spacing.8'),
+    bottom: '-22px',
+    left: theme('spacing.16'),
+  },
+});
+
+export const ButtonCss = css({
+  '&': {},
+});

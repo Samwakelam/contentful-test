@@ -4,4 +4,5 @@ export * from './helpers';
 export * from './hooks';
 export * from './lib';
 export * from './styles';
+export * from './utils';
 export * from './views';

@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { Hook } from '@sam/types';
+import { DispatchesType, Hook } from '@sam/types';
 
 import { InputGroupHandlers, InputGroupState } from '../../../forms';
 
 export type AddModelModalProps = {
   onClose: () => void;
+  dispatches: DispatchesType;
 };
 
 export type AddModelModalState = {
@@ -18,4 +19,5 @@ export type AddModelModalState = {
 
 export type AddModelModalHandlers = {
   onCreate: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  resolveIsButtonDisabled: () => boolean;
 };

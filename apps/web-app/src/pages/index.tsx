@@ -2,11 +2,10 @@ import { GetServerSidePropsContext } from 'next';
 import { Entry } from 'contentful';
 import { useState } from 'react';
 
-import { WebApp, WebAppProps } from '@sam/library';
+import { WebApp, WebAppProps, renderWidget, parseEntry } from '@sam/library';
 import { RegionCode, Regions, Widget } from '@sam/types';
 
 import { getEntry, getLocales } from '../../lib';
-import { parseEntry, renderWidgets } from '../../lib/parsers/parse-widgets';
 
 type IndexProps = {
   entry: Entry<any>;
@@ -26,7 +25,7 @@ const Index = ({ entry, regions, defaultLocale }: IndexProps) => {
   return (
     <WebApp {...webApp}>
       <>
-        {renderWidgets(
+        {renderWidget(
           widget,
           selectedRegion as RegionCode,
           defaultLocale as RegionCode

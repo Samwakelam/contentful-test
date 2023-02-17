@@ -4,12 +4,12 @@ import { InputGroup } from '../../../forms';
 import { Button, ButtonVariant } from '../../atoms';
 
 import { useAddModelModal } from './add-model-modal.hook';
-import { AddModelModalProps } from './add-model.definition';
+import { AddModelModalProps } from './add-model-modal.definition';
 
-import * as S from './add-model.styles';
+import * as S from './add-model-modal.styles';
 
-export const AddModelModal = ({ onClose }: AddModelModalProps) => {
-  const { state, handlers } = useAddModelModal(onClose);
+export const AddModelModal = ({ onClose, dispatches }: AddModelModalProps) => {
+  const { state, handlers } = useAddModelModal({ onClose, dispatches });
 
   return (
     <div className={tw(S.AddModelModalCss)}>
@@ -39,7 +39,7 @@ export const AddModelModal = ({ onClose }: AddModelModalProps) => {
 
       <Button
         buttonVariant={ButtonVariant.PRIMARY}
-        disabled={state.isProcessing}
+        disabled={handlers.resolveIsButtonDisabled() || state.isProcessing}
         onClick={(e) => handlers.onCreate(e)}
       >
         Create
