@@ -20,16 +20,7 @@ import * as S from './editor.styles';
 export const Editor = ({ widgetId, children }: EditorProps) => {
   const { state, handlers } = useContentfulApp();
 
-  const getEntry = useCallback(async () => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      await Promise.all([getEntry()]);
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [widgetId]);
+  const widget = handlers.getWidget(widgetId) ?? undefined;
 
   return (
     <div className={tw(S.EditorCss)}>
@@ -81,9 +72,14 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
       <Modal
         isOpen={state.openModal === `update-${widgetId}`}
         onRequestClose={() => handlers.onModalAction(null)}
-        modalTitle="Edit Widget"
+        modalTitle="Edit Component"
       >
-        <EntryModal type="update" onClose={() => {}} dispatches={{}} />
+        <EntryModal
+          type="update"
+          onClose={() => handlers.onModalAction(null)}
+          dispatches={{ onUpdate: handlers.updateWidget }}
+          widget={widget}
+        />
       </Modal>
     </div>
   );

@@ -35,6 +35,7 @@ export const ContentfulAppContext = createContext<ContentfulAppContextProps>({
     onRegionSelect: () => {},
     onUnPublish: () => {},
     resolvePublishedState: () => false,
+    updateWidget: () => {},
   },
 });
 
@@ -167,6 +168,21 @@ export const ContentfulAppProvider = ({
     fetchRegions();
   }, []);
 
+  const updateWidget: ContentfulAppHandlers['updateWidget'] = async (model) => {
+    const widgetId = model.id;
+    delete model.id;
+    const widget = await contentfulAppService.updateWidget(widgetId, model);
+
+    const newWidgets: Widget[] = [...state.widgets];
+
+    if (widget) {
+      const index = newWidgets.findIndex((widget) => widget.id === widgetId);
+      newWidgets[index] = widget;
+    }
+
+    setState((prev) => ({ ...prev, widgets: newWidgets }));
+  };
+
   return (
     <ContentfulAppContext.Provider
       value={{
@@ -180,6 +196,7 @@ export const ContentfulAppProvider = ({
           onRegionSelect,
           onUnPublish,
           resolvePublishedState,
+          updateWidget,
         },
       }}
     >

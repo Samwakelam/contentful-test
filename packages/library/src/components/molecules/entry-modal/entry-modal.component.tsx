@@ -12,16 +12,15 @@ export const EntryModal = ({
   type = 'create',
   onClose,
   dispatches,
-  entry,
+  widget,
 }: EntryModalProps) => {
   const { state, handlers } = useEntryModal({
     type,
     onClose,
     dispatches,
-    entry,
+    widget,
   });
 
-  console.log('entry: ', entry);
   return (
     <div className={tw(S.EntryModalCss)}>
       <InputGroup
@@ -51,10 +50,8 @@ export const EntryModal = ({
       <Button
         buttonVariant={ButtonVariant.PRIMARY}
         disabled={handlers.resolveIsButtonDisabled() || state.isProcessing}
-        onClick={(e) => handlers.onCreate(e)}
-      >
-        Create
-      </Button>
+        {...handlers.resolveSubmitButton()}
+      />
     </div>
   );
 };

@@ -149,4 +149,10 @@ An entry has [publish](https://contentful.github.io/contentful-management.js/con
 
 10. Typescript the Entry properly
 
-- Created an additional service layer that will accept a `contentful-management` entry and convert it to a Widget. This means there is no meeting of Entry types in the library and the parser is inside the service.
+Created an additional service layer that will accept a `contentful-management` entry and convert it to a Widget. This means there is no meeting of Entry types in the library and the parser is inside the service.
+
+11. Editing / updating Widget
+
+The Entry Model has a method `update` where you can amend the entry fields followed by using the method.
+
+**Gotcha** The update is not published to the delivery API.

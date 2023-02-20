@@ -15,8 +15,9 @@ export const useEntryModal = ({
   type,
   onClose,
   dispatches,
+  widget,
 }: EntryModalProps): Hook<EntryModalState, EntryModalHandlers> => {
-  const { onAdd } = dispatches;
+  const { onAdd, onUpdate } = dispatches;
 
   const [state, setState] = useState<
     Omit<
@@ -27,7 +28,7 @@ export const useEntryModal = ({
     isProcessing: false,
   });
 
-  const nameInput = useInputGroup('', [
+  const nameInput = useInputGroup(widget?.name['en-US'] ?? '', [
     [(value) => value.length > 0, 'This field Is required to have an input'],
     [
       Validators['generic string'],
@@ -35,7 +36,7 @@ export const useEntryModal = ({
     ],
   ]);
 
-  const usDescriptionInput = useInputGroup('', [
+  const usDescriptionInput = useInputGroup(widget?.description['en-US'] ?? '', [
     [
       (value) => value.length > 0,
       'There must be a value for the default locale',
@@ -46,7 +47,7 @@ export const useEntryModal = ({
     ],
   ]);
 
-  const gbDescriptionInput = useInputGroup('', [
+  const gbDescriptionInput = useInputGroup(widget?.description['en-GB'] ?? '', [
     [
       Validators['generic string'],
       'There is an error with your input, please try again.',
@@ -78,7 +79,31 @@ export const useEntryModal = ({
     onClose();
   };
 
-  const onEdit: EntryModalHandlers['onEdit'] = () => {};
+  const onEdit: EntryModalHandlers['onEdit'] = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setState((prev) => ({ ...prev, isProcessing: true }));
+
+    const nameValue = nameInput.state.value;
+    const usDescValue = usDescriptionInput.state.value;
+    const gbDescValue = gbDescriptionInput.state.value;
+
+    const model: ModelProps & { id: string } = {
+      id: widget!.id,
+      name: { 'en-US': nameValue },
+      description: { 'en-US': usDescValue },
+    };
+
+    if (gbDescValue) {
+      model.description['en-GB'] = gbDescValue;
+    }
+
+    await onUpdate(model, () => {});
+
+    setState((prev) => ({ ...prev, isProcessing: false }));
+    onClose();
+  };
 
   const resolveIsButtonDisabled: EntryModalHandlers['resolveIsButtonDisabled'] =
     () => {

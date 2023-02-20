@@ -87,6 +87,15 @@ export class ContentfulAppService implements ContentfulAppContract {
 
     return parseEntry(entry);
   }
+
+  async updateWidget(
+    id: string,
+    model: { [key: string]: unknown }
+  ): Promise<Widget | null> {
+    const entry = await Stores.entryService.update(id, model);
+
+    return parseEntry(entry);
+  }
 }
 
 export const useContentfulAppService = () => {

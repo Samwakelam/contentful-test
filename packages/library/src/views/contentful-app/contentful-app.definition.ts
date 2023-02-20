@@ -32,6 +32,7 @@ export type ContentfulAppHandlers = {
     widgetId: string
   ) => void;
   resolvePublishedState: (widgetId: string) => boolean;
+  updateWidget: (model: { [key: string]: any }) => void;
 };
 
 export type ContentfulAppContextProps = {

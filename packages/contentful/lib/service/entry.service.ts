@@ -49,8 +49,17 @@ export class EntryService {
     }
   }
 
-  async update() {
-    const environment = await getEnvironment();
+  async update(id: string, fields: { [key: string]: unknown }) {
+    try {
+      const entry: Entry = await this.get(id);
+      entry.fields = fields;
+
+      const updatedEntry = await entry.update();
+
+      return updatedEntry;
+    } catch (error) {
+      throw new Error(`EntryService update: ${error}`);
+    }
   }
 
   async del(id: string, query?: QueryOptions) {

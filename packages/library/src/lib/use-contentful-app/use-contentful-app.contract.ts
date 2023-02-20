@@ -8,4 +8,8 @@ export interface ContentfulAppContract {
   getAllRegions(): Promise<{ regions: Region[]; defaultRegion: Region }>;
   publishWidget(id: string): Promise<Widget | null>;
   unPublishWidget(id: string): Promise<Widget | null>;
+  updateWidget(
+    id: string,
+    model: { [key: string]: unknown }
+  ): Promise<Widget | null>;
 }
