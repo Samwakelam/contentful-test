@@ -138,3 +138,9 @@ Creating an Entry does not release the Entries to the web app as these are unpub
 8. Delete an Entry
 
 You get an entry and apply the `delete()` method. This is throwing an error in my service. I have suspicions that the id is not accurate.
+
+9. Get new entries to show on Web-App
+
+The Web app only pulls content from the [Delivery Api](#delivery-api) meaning that only contentful's published content will show in the web app.
+
+An entry has [publish](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/Entry.html#.publish) and [unpublish](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/Entry.html#.unpublish) methods.

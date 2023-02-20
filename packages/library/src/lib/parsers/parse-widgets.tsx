@@ -1,8 +1,9 @@
 import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
 
-import { RegionCode, Widget } from '@sam/types';
+import { isWidget, RegionCode, Widget } from '@sam/types';
 
 import { SamTestModel } from '../../components';
+import { parseEntry } from './parse-entry';
 
 export const parseWidget = (
   widget: Widget,
@@ -67,13 +68,16 @@ export const renderWidget = (
 };
 
 export const renderWidgets = (
-  widgets: Widget[],
+  widgets: any[],
   region: RegionCode,
   defaultRegion: RegionCode,
   editorComponent?: React.FC<any>
 ) => {
-  const map = widgets.map((widget) =>
-    renderWidget(widget, region, defaultRegion, editorComponent)
-  );
+  const map = widgets.map((widget) => {
+    console.log('widget: ', widget);
+    const _widget = isWidget(widget) ? widget : parseEntry(widget);
+
+    return renderWidget(_widget, region, defaultRegion, editorComponent);
+  });
   return map;
 };

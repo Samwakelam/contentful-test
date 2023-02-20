@@ -7,7 +7,7 @@ import {
   useContext,
 } from 'react';
 
-import { EntryService } from '@sam/contentful';
+import { EntryService, Entry } from '@sam/contentful';
 import { Regions, RegionCode } from '@sam/types';
 
 import {
@@ -30,7 +30,10 @@ export const ContentfulAppContext = createContext<ContentfulAppContextProps>({
     addEntry: () => {},
     deleteEntry: () => {},
     onModalAction: () => {},
+    onPublish: () => {},
     onRegionSelect: () => {},
+    onUnPublish: () => {},
+    resolvePublishedState: () => false,
   },
 });
 
@@ -46,14 +49,6 @@ export const ContentfulAppProvider = ({
   children: ReactElement;
 }) => {
   const [state, setState] = useState<ContentfulAppState>(initialState);
-
-  const onModalAction: ContentfulAppHandlers['onModalAction'] = (modal) => {
-    setState((prev) => ({ ...prev, openModal: modal }));
-  };
-
-  const onRegionSelect: ContentfulAppHandlers['onRegionSelect'] = (region) => {
-    setState((prev) => ({ ...prev, selectedRegion: region }));
-  };
 
   const fetchRegions = useCallback(async () => {
     const locales = await Store.locales();
@@ -73,29 +68,32 @@ export const ContentfulAppProvider = ({
     }));
   }, []);
 
+  const parseEntry = (entry: Entry) => {
+    const { sys, fields } = entry;
+
+    const properties = Object.entries(fields)
+      .map(([key, value]) => [key, value])
+      .reduce((obj, _entry: any[]) => {
+        // @ts-ignore
+        obj[_entry[0]] = _entry[1];
+        return obj;
+      }, {});
+
+    return {
+      _template: sys.contentType.sys.id,
+      id: sys.id,
+      published: entry.isPublished(),
+      ...properties,
+    };
+  };
+
   const fetchEntries = useCallback(async () => {
     const entries = await Store.getAll({
       locale: '*',
       content_type: 'samTestModel',
     });
 
-    const parsed = entries.map((entry) => {
-      const { sys, fields } = entry;
-
-      const properties = Object.entries(fields)
-        .map(([key, value]) => [key, value])
-        .reduce((obj, _entry: any[]) => {
-          // @ts-ignore
-          obj[_entry[0]] = _entry[1];
-          return obj;
-        }, {});
-
-      return {
-        _template: sys.contentType.sys.id,
-        id: sys.id,
-        ...properties,
-      };
-    });
+    const parsed = entries.map((entry) => parseEntry(entry));
 
     setState((prev) => ({ ...prev, widgets: parsed }));
   }, []);
@@ -119,6 +117,68 @@ export const ContentfulAppProvider = ({
     }
   };
 
+  const onModalAction: ContentfulAppHandlers['onModalAction'] = (modal) => {
+    setState((prev) => ({ ...prev, openModal: modal }));
+  };
+
+  const onPublish: ContentfulAppHandlers['onPublish'] = async (
+    event,
+    entryId
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    try {
+      const publishedEntry = await Store.publish(entryId);
+      const parsedEntry = parseEntry(publishedEntry);
+
+      const index = state.widgets.findIndex(
+        (widget) => widget.id === parsedEntry.id
+      );
+      const newWidgets = [...state.widgets];
+
+      newWidgets[index] = parsedEntry;
+
+      setState((prev) => ({ ...prev, widgets: newWidgets }));
+    } catch (error) {
+      throw new Error(`useContentfulApp onPublish: ${error}`);
+    }
+  };
+
+  const onRegionSelect: ContentfulAppHandlers['onRegionSelect'] = (region) => {
+    setState((prev) => ({ ...prev, selectedRegion: region }));
+  };
+
+  const onUnPublish: ContentfulAppHandlers['onUnPublish'] = async (
+    event,
+    entryId
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    try {
+      const unPublishedEntry = await Store.unPublish(entryId);
+      const parsedEntry = parseEntry(unPublishedEntry);
+
+      const index = state.widgets.findIndex(
+        (widget) => widget.id === parsedEntry.id
+      );
+      const newWidgets = [...state.widgets];
+      newWidgets[index] = parsedEntry;
+
+      setState((prev) => ({ ...prev, widgets: newWidgets }));
+    } catch (error) {
+      throw new Error(`useContentfulApp onUnPublish: ${error}`);
+    }
+  };
+
+  const resolvePublishedState: ContentfulAppHandlers['resolvePublishedState'] =
+    (entryId) => {
+      const widget = state.widgets.find((widget) => widget.id === entryId);
+
+      return widget?.published ?? false;
+    };
+
   useEffect(() => {
     fetchEntries();
     fetchRegions();
@@ -132,7 +192,10 @@ export const ContentfulAppProvider = ({
           addEntry,
           deleteEntry,
           onModalAction,
+          onPublish,
           onRegionSelect,
+          onUnPublish,
+          resolvePublishedState,
         },
       }}
     >

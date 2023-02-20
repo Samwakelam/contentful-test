@@ -34,5 +34,8 @@ export const ContentCss = css({
     paddingLeft: theme('spacing.24'),
     paddingRight: theme('spacing.24'),
     paddingBottom: theme('spacing.24'),
+    display: 'flex',
+    flexFlow: 'column',
+    gap: theme('spacing.16'),
   },
 });
