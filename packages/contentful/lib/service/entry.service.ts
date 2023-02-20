@@ -33,20 +33,17 @@ export class EntryService {
     }
   }
 
-  async create(model: {
-    name: { 'en-US': string };
-    description: { 'en-US': string; 'en-GB'?: string };
-  }) {
+  async create(content_type: string, fields: { [key: string]: unknown }) {
     try {
       const environment = await getEnvironment();
 
-      const data = {
+      const entry: Entry = await environment.createEntry(content_type, {
         fields: {
-          ...model,
+          ...fields,
         },
-      };
+      });
 
-      await environment.createEntry('samTestModel', data);
+      return entry;
     } catch (error) {
       throw new Error(`EntryService create: ${error}`);
     }
@@ -98,5 +95,3 @@ export class EntryService {
     return locales;
   }
 }
-
-export type { Entry } from 'contentful-management';

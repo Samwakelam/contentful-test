@@ -7,14 +7,14 @@ import {
   useContext,
 } from 'react';
 
-import { EntryService, Entry } from '@sam/contentful';
-import { Regions, RegionCode } from '@sam/types';
+import { Regions, Widget } from '@sam/types';
 
 import {
   ContentfulAppContextProps,
   ContentfulAppHandlers,
   ContentfulAppState,
 } from './contentful-app.definition';
+import { useContentfulAppService } from '../../lib/use-contentful-app/use-contentful-app.service';
 
 const initialState: ContentfulAppState = {
   openModal: null,
@@ -27,9 +27,9 @@ const initialState: ContentfulAppState = {
 export const ContentfulAppContext = createContext<ContentfulAppContextProps>({
   state: initialState,
   handlers: {
-    addEntry: () => {},
-    deleteEntry: () => {},
-    fetchEntry: async () => null,
+    addWidget: () => {},
+    deleteWidget: () => {},
+    getWidget: () => null,
     onModalAction: () => {},
     onPublish: () => {},
     onRegionSelect: () => {},
@@ -42,89 +42,62 @@ export const useContentfulApp = (): ContentfulAppContextProps => {
   return useContext(ContentfulAppContext);
 };
 
-const Store = new EntryService();
-
 export const ContentfulAppProvider = ({
   children,
 }: {
   children: ReactElement;
 }) => {
+  const contentfulAppService = useContentfulAppService();
+
   const [state, setState] = useState<ContentfulAppState>(initialState);
 
   const fetchRegions = useCallback(async () => {
-    const locales = await Store.locales();
-
-    const regions = locales.items.map(
-      (locale) => Regions[locale.code as RegionCode]
-    );
-
-    const index = locales.items.findIndex((locale) => locale.default);
-    const defaultRegion = Regions[locales.items[index].code as RegionCode];
+    const { regions, defaultRegion } =
+      await contentfulAppService.getAllRegions();
 
     setState((prev) => ({
       ...prev,
       regions,
       defaultRegion,
-      selectedRegion: defaultRegion,
     }));
   }, []);
 
-  const parseEntry = (entry: Entry) => {
-    const { sys, fields } = entry;
+  const fetchWidgets = useCallback(async () => {
+    const widgets = await contentfulAppService.getAllWidgets();
 
-    const properties = Object.entries(fields)
-      .map(([key, value]) => [key, value])
-      .reduce((obj, _entry: any[]) => {
-        // @ts-ignore
-        obj[_entry[0]] = _entry[1];
-        return obj;
-      }, {});
-
-    return {
-      _template: sys.contentType.sys.id,
-      id: sys.id,
-      published: entry.isPublished(),
-      ...properties,
-    };
-  };
-
-  const fetchEntries = useCallback(async () => {
-    const entries = await Store.getAll({
-      locale: '*',
-      content_type: 'samTestModel',
-    });
-
-    const parsed = entries.map((entry) => parseEntry(entry));
-
-    setState((prev) => ({ ...prev, widgets: parsed }));
+    if (widgets) {
+      setState((prev) => ({ ...prev, widgets }));
+    }
   }, []);
 
-  const fetchEntry: ContentfulAppHandlers['fetchEntry'] = async (entryId) => {
-    const entry = await Store.get(entryId, {
-      locale: '*',
-    });
+  const getWidget: ContentfulAppHandlers['getWidget'] = (widgetId) => {
+    const widget = state.widgets.find((w) => w.id === widgetId);
 
-    if (entry) return entry;
-
+    if (widget) {
+      return widget;
+    }
     return null;
   };
 
-  const addEntry: ContentfulAppHandlers['addEntry'] = async (model) => {
+  const addWidget: ContentfulAppHandlers['addWidget'] = async (model) => {
     try {
-      await Store.create(model);
+      await contentfulAppService.createWidget(model);
 
-      fetchEntries();
+      fetchWidgets();
     } catch (error) {
-      throw new Error(`useContentfulApp addEntry: ${error}`);
+      throw new Error(`useContentfulApp addWidget: ${error}`);
     }
   };
 
-  const deleteEntry: ContentfulAppHandlers['deleteEntry'] = async (entryId) => {
+  const deleteWidget: ContentfulAppHandlers['deleteWidget'] = async (
+    widgetId
+  ) => {
     try {
-      await Store.del(entryId);
-      fetchEntries();
+      await contentfulAppService.deleteWidget(widgetId);
+
+      fetchWidgets();
     } catch (error) {
-      throw new Error(`useContentfulApp deleteEntry: ${error}`);
+      throw new Error(`useContentfulApp deleteWidget: ${error}`);
     }
   };
 
@@ -134,21 +107,20 @@ export const ContentfulAppProvider = ({
 
   const onPublish: ContentfulAppHandlers['onPublish'] = async (
     event,
-    entryId
+    widgetId
   ) => {
     event.preventDefault();
     event.stopPropagation();
 
     try {
-      const publishedEntry = await Store.publish(entryId);
-      const parsedEntry = parseEntry(publishedEntry);
+      const widget = await contentfulAppService.publishWidget(widgetId);
 
-      const index = state.widgets.findIndex(
-        (widget) => widget.id === parsedEntry.id
-      );
-      const newWidgets = [...state.widgets];
+      const newWidgets: Widget[] = [...state.widgets];
 
-      newWidgets[index] = parsedEntry;
+      if (widget) {
+        const index = newWidgets.findIndex((widget) => widget.id === widgetId);
+        newWidgets[index] = widget;
+      }
 
       setState((prev) => ({ ...prev, widgets: newWidgets }));
     } catch (error) {
@@ -162,20 +134,20 @@ export const ContentfulAppProvider = ({
 
   const onUnPublish: ContentfulAppHandlers['onUnPublish'] = async (
     event,
-    entryId
+    widgetId
   ) => {
     event.preventDefault();
     event.stopPropagation();
 
     try {
-      const unPublishedEntry = await Store.unPublish(entryId);
-      const parsedEntry = parseEntry(unPublishedEntry);
+      const widget = await contentfulAppService.unPublishWidget(widgetId);
 
-      const index = state.widgets.findIndex(
-        (widget) => widget.id === parsedEntry.id
-      );
-      const newWidgets = [...state.widgets];
-      newWidgets[index] = parsedEntry;
+      const newWidgets: Widget[] = [...state.widgets];
+
+      if (widget) {
+        const index = newWidgets.findIndex((widget) => widget.id === widgetId);
+        newWidgets[index] = widget;
+      }
 
       setState((prev) => ({ ...prev, widgets: newWidgets }));
     } catch (error) {
@@ -184,14 +156,14 @@ export const ContentfulAppProvider = ({
   };
 
   const resolvePublishedState: ContentfulAppHandlers['resolvePublishedState'] =
-    (entryId) => {
-      const widget = state.widgets.find((widget) => widget.id === entryId);
+    (widgetId) => {
+      const widget = state.widgets.find((widget) => widget.id === widgetId);
 
       return widget?.published ?? false;
     };
 
   useEffect(() => {
-    fetchEntries();
+    fetchWidgets();
     fetchRegions();
   }, []);
 
@@ -200,9 +172,9 @@ export const ContentfulAppProvider = ({
       value={{
         state: { ...state },
         handlers: {
-          addEntry,
-          deleteEntry,
-          fetchEntry,
+          addWidget,
+          deleteWidget,
+          getWidget,
           onModalAction,
           onPublish,
           onRegionSelect,

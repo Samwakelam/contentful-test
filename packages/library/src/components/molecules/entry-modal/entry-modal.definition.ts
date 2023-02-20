@@ -1,16 +1,15 @@
 import React from 'react';
 
-import { DispatchesType, Hook } from '@sam/types';
+import { DispatchesType, Hook, Widget } from '@sam/types';
 
 import { InputGroupHandlers, InputGroupState } from '../../../forms';
 import { ButtonProps } from '../../atoms';
-import { Entry } from '@sam/contentful';
 
 export type EntryModalProps = {
   type: 'create' | 'update';
   onClose: () => void;
   dispatches: DispatchesType;
-  entry?: Entry;
+  widget?: Widget;
 };
 
 export type EntryModalState = {

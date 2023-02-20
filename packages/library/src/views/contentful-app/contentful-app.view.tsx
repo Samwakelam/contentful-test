@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { tw } from 'twind';
 
-import { EntryService } from '@sam/contentful';
 import { Languages } from '@sam/types';
 
 import {
@@ -79,7 +78,7 @@ export const ContentfulAppComponent = ({}: ContentfulAppProps) => {
         <EntryModal
           type="create"
           onClose={() => handlers.onModalAction(null)}
-          dispatches={{ onAdd: handlers.addEntry }}
+          dispatches={{ onAdd: handlers.addWidget }}
         />
       </Modal>
     </div>

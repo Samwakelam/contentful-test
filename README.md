@@ -144,3 +144,9 @@ You get an entry and apply the `delete()` method. This is throwing an error in m
 The Web app only pulls content from the [Delivery Api](#delivery-api) meaning that only contentful's published content will show in the web app.
 
 An entry has [publish](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/Entry.html#.publish) and [unpublish](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/Entry.html#.unpublish) methods.
+
+**Issues** Typescript!! The payload from contentful-management and contentful are both different for Entry.
+
+10. Typescript the Entry properly
+
+- Created an additional service layer that will accept a `contentful-management` entry and convert it to a Widget. This means there is no meeting of Entry types in the library and the parser is inside the service.

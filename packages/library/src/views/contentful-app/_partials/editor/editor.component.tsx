@@ -9,7 +9,7 @@ import {
   EntryModal,
   Modal,
 } from '../../../../components';
-import { parseEntry } from '../../../../lib';
+
 import { useContentfulApp } from '../../contentful-app.view-model';
 import { Tag } from '../tag';
 
@@ -74,7 +74,7 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
         <ConfirmModal
           type={ConfirmModalType.DELETE}
           widgetId={widgetId}
-          dispatches={{ onDelete: handlers.deleteEntry }}
+          dispatches={{ onDelete: handlers.deleteWidget }}
           onClose={() => handlers.onModalAction(null)}
         />
       </Modal>

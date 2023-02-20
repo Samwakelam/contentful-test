@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Region, Widget } from '@sam/types';
-import { Entry } from '@sam/contentful';
 
 export type ContentfulAppProps = {};
 
@@ -19,20 +18,20 @@ export type ModelProps = {
 };
 
 export type ContentfulAppHandlers = {
-  addEntry: (model: ModelProps) => void;
-  deleteEntry: (entryId: string) => void;
-  fetchEntry: (entryId: string) => Promise<Entry | null>;
+  addWidget: (model: ModelProps) => void;
+  deleteWidget: (widgetId: string) => void;
+  getWidget: (widgetId: string) => Widget | null;
   onModalAction: (modal: ContentfulAppState['openModal']) => void;
   onPublish: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    entryId: string
+    widgetId: string
   ) => void;
   onRegionSelect: (region: Region) => void;
   onUnPublish: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    entryId: string
+    widgetId: string
   ) => void;
-  resolvePublishedState: (entryId: string) => boolean;
+  resolvePublishedState: (widgetId: string) => boolean;
 };
 
 export type ContentfulAppContextProps = {
