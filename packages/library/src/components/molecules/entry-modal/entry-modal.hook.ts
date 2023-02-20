@@ -2,24 +2,25 @@ import { useState } from 'react';
 
 import { Hook } from '@sam/types';
 
-import {
-  AddModelModalHandlers,
-  AddModelModalProps,
-  AddModelModalState,
-} from './add-model-modal.definition';
 import { useInputGroup, Validators } from '../../../forms';
-import { ModuleCache } from 'vitest';
 import { ModelProps } from '../../../views';
 
-export const useAddModelModal = ({
+import {
+  EntryModalHandlers,
+  EntryModalProps,
+  EntryModalState,
+} from './entry-modal.definition';
+
+export const useEntryModal = ({
+  type,
   onClose,
   dispatches,
-}: AddModelModalProps): Hook<AddModelModalState, AddModelModalHandlers> => {
+}: EntryModalProps): Hook<EntryModalState, EntryModalHandlers> => {
   const { onAdd } = dispatches;
 
   const [state, setState] = useState<
     Omit<
-      AddModelModalState,
+      EntryModalState,
       'nameInput' | 'usDescriptionInput' | 'gbDescriptionInput'
     >
   >({
@@ -52,7 +53,7 @@ export const useAddModelModal = ({
     ],
   ]);
 
-  const onCreate: AddModelModalHandlers['onCreate'] = async (e) => {
+  const onCreate: EntryModalHandlers['onCreate'] = async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -77,7 +78,9 @@ export const useAddModelModal = ({
     onClose();
   };
 
-  const resolveIsButtonDisabled: AddModelModalHandlers['resolveIsButtonDisabled'] =
+  const onEdit: EntryModalHandlers['onEdit'] = () => {};
+
+  const resolveIsButtonDisabled: EntryModalHandlers['resolveIsButtonDisabled'] =
     () => {
       const valid =
         nameInput.state.isValid &&
@@ -89,6 +92,23 @@ export const useAddModelModal = ({
       return !valid && !hasValues;
     };
 
+  const resolveSubmitButton: EntryModalHandlers['resolveSubmitButton'] = () => {
+    switch (type) {
+      case 'create': {
+        return {
+          children: 'Create',
+          onClick: (e) => onCreate(e),
+        };
+      }
+      case 'update': {
+        return {
+          children: 'Update',
+          onClick: (e) => onEdit(e),
+        };
+      }
+    }
+  };
+
   return {
     state: {
       ...state,
@@ -98,7 +118,9 @@ export const useAddModelModal = ({
     },
     handlers: {
       onCreate,
+      onEdit,
       resolveIsButtonDisabled,
+      resolveSubmitButton,
     },
   };
 };

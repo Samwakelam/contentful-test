@@ -48,7 +48,6 @@ export const getServerSideProps = async (
     locale: '*',
     content_type: 'samTestModel',
   });
-  console.log('entries: ', entries);
 
   const widgets = [...entries.items];
 

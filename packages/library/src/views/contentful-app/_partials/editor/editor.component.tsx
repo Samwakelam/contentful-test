@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from 'react';
 import { tw } from 'twind';
 
 import {
@@ -5,8 +6,10 @@ import {
   ButtonVariant,
   ConfirmModal,
   ConfirmModalType,
+  EntryModal,
   Modal,
 } from '../../../../components';
+import { parseEntry } from '../../../../lib';
 import { useContentfulApp } from '../../contentful-app.view-model';
 import { Tag } from '../tag';
 
@@ -16,6 +19,17 @@ import * as S from './editor.styles';
 
 export const Editor = ({ widgetId, children }: EditorProps) => {
   const { state, handlers } = useContentfulApp();
+
+  const getEntry = useCallback(async () => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      await Promise.all([getEntry()]);
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [widgetId]);
 
   return (
     <div className={tw(S.EditorCss)}>
@@ -27,7 +41,7 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
         <Button
           icon={{ icon: 'pencil', ariaLabel: 'edit' }}
           buttonVariant={ButtonVariant.PRIMARY}
-          onClick={() => console.log('id: ', widgetId)}
+          onClick={() => handlers.onModalAction(`update-${widgetId}`)}
         />
         <Button
           icon={{ icon: 'bin', ariaLabel: 'delete' }}
@@ -63,6 +77,13 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
           dispatches={{ onDelete: handlers.deleteEntry }}
           onClose={() => handlers.onModalAction(null)}
         />
+      </Modal>
+      <Modal
+        isOpen={state.openModal === `update-${widgetId}`}
+        onRequestClose={() => handlers.onModalAction(null)}
+        modalTitle="Edit Widget"
+      >
+        <EntryModal type="update" onClose={() => {}} dispatches={{}} />
       </Modal>
     </div>
   );

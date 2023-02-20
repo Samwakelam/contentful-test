@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Region, Widget } from '@sam/types';
+import { Entry } from '@sam/contentful';
 
 export type ContentfulAppProps = {};
 
@@ -20,6 +21,7 @@ export type ModelProps = {
 export type ContentfulAppHandlers = {
   addEntry: (model: ModelProps) => void;
   deleteEntry: (entryId: string) => void;
+  fetchEntry: (entryId: string) => Promise<Entry | null>;
   onModalAction: (modal: ContentfulAppState['openModal']) => void;
   onPublish: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,

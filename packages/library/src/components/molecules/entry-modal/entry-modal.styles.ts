@@ -1,6 +1,6 @@
 import { css, theme } from 'twind/css';
 
-export const AddModelModalCss = css({
+export const EntryModalCss = css({
   '&': {
     display: 'flex',
     flexFlow: 'column',

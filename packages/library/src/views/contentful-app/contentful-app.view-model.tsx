@@ -29,6 +29,7 @@ export const ContentfulAppContext = createContext<ContentfulAppContextProps>({
   handlers: {
     addEntry: () => {},
     deleteEntry: () => {},
+    fetchEntry: async () => null,
     onModalAction: () => {},
     onPublish: () => {},
     onRegionSelect: () => {},
@@ -97,6 +98,16 @@ export const ContentfulAppProvider = ({
 
     setState((prev) => ({ ...prev, widgets: parsed }));
   }, []);
+
+  const fetchEntry: ContentfulAppHandlers['fetchEntry'] = async (entryId) => {
+    const entry = await Store.get(entryId, {
+      locale: '*',
+    });
+
+    if (entry) return entry;
+
+    return null;
+  };
 
   const addEntry: ContentfulAppHandlers['addEntry'] = async (model) => {
     try {
@@ -191,6 +202,7 @@ export const ContentfulAppProvider = ({
         handlers: {
           addEntry,
           deleteEntry,
+          fetchEntry,
           onModalAction,
           onPublish,
           onRegionSelect,

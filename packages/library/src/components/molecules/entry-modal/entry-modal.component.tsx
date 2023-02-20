@@ -3,16 +3,27 @@ import { tw } from 'twind';
 import { InputGroup } from '../../../forms';
 import { Button, ButtonVariant } from '../../atoms';
 
-import { useAddModelModal } from './add-model-modal.hook';
-import { AddModelModalProps } from './add-model-modal.definition';
+import { useEntryModal } from './entry-modal.hook';
+import { EntryModalProps } from './entry-modal.definition';
 
-import * as S from './add-model-modal.styles';
+import * as S from './entry-modal.styles';
 
-export const AddModelModal = ({ onClose, dispatches }: AddModelModalProps) => {
-  const { state, handlers } = useAddModelModal({ onClose, dispatches });
+export const EntryModal = ({
+  type = 'create',
+  onClose,
+  dispatches,
+  entry,
+}: EntryModalProps) => {
+  const { state, handlers } = useEntryModal({
+    type,
+    onClose,
+    dispatches,
+    entry,
+  });
 
+  console.log('entry: ', entry);
   return (
-    <div className={tw(S.AddModelModalCss)}>
+    <div className={tw(S.EntryModalCss)}>
       <InputGroup
         label="Name"
         showLabel
