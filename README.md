@@ -155,4 +155,8 @@ Created an additional service layer that will accept a `contentful-management` e
 
 The Entry Model has a method `update` where you can amend the entry fields followed by using the method.
 
-**Gotcha** The update is not published to the delivery API.
+**Gotcha** The update is not published to the delivery API. This means that the changes will not display on the web-app.
+
+**Solution** The entry payload has published at and updatedAt properties which I have passed to my Widget object. Looking to see if the updated date exceeds the published date adds a new publishChanges Button and UnPublished Changes Tag.
+
+It is new addition as the widget is still published with old content on the web-app and needs this indicator for the user.

@@ -35,6 +35,7 @@ export const ContentfulAppContext = createContext<ContentfulAppContextProps>({
     onRegionSelect: () => {},
     onUnPublish: () => {},
     resolvePublishedState: () => false,
+    resolveUnPublishedChanges: () => false,
     updateWidget: () => {},
   },
 });
@@ -168,6 +169,22 @@ export const ContentfulAppProvider = ({
     fetchRegions();
   }, []);
 
+  const resolveUnPublishedChanges: ContentfulAppHandlers['resolveUnPublishedChanges'] =
+    (widgetId) => {
+      const widget = state.widgets.find((widget) => widget.id === widgetId);
+
+      if (widget && widget.publishedAt && widget.updatedAt) {
+        const publishedAt = new Date(widget?.publishedAt).getTime();
+        const updatedAt = new Date(widget?.updatedAt).getTime();
+
+        if (publishedAt < updatedAt) {
+          return true;
+        }
+        return false;
+      }
+      return false;
+    };
+
   const updateWidget: ContentfulAppHandlers['updateWidget'] = async (model) => {
     const widgetId = model.id;
     delete model.id;
@@ -196,6 +213,7 @@ export const ContentfulAppProvider = ({
           onRegionSelect,
           onUnPublish,
           resolvePublishedState,
+          resolveUnPublishedChanges,
           updateWidget,
         },
       }}

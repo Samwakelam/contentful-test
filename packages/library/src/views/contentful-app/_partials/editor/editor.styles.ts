@@ -38,10 +38,11 @@ export const UnPublishButtonCss = css({
   },
 });
 
-export const TagCss = css({
+export const TagBoxCss = css({
   '&': {
     position: 'absolute',
     top: theme('spacing.8'),
     right: theme('spacing.8'),
+    alignItems: 'flex-end',
   },
 });

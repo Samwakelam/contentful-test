@@ -18,6 +18,7 @@ export class EntryService {
       EntryProps<KeyValueMap>
     > = await environment.getEntries(query);
 
+    console.log('entries.items: ', entries.items);
     return entries.items;
   }
 

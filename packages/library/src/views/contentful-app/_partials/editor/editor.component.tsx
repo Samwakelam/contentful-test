@@ -1,4 +1,3 @@
-import { useCallback, useEffect } from 'react';
 import { tw } from 'twind';
 
 import {
@@ -8,10 +7,12 @@ import {
   ConfirmModalType,
   EntryModal,
   Modal,
+  SizeType,
+  Tooltip,
 } from '../../../../components';
 
 import { useContentfulApp } from '../../contentful-app.view-model';
-import { Tag } from '../tag';
+import { TagColour, Tags } from '../tags';
 
 import { EditorProps } from './editor.definition';
 
@@ -24,10 +25,27 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
 
   return (
     <div className={tw(S.EditorCss)}>
-      <Tag
-        published={handlers.resolvePublishedState(widgetId)}
-        className={tw(S.TagCss)}
+      <Tags
+        className={tw(S.TagBoxCss)}
+        tags={[
+          {
+            value: 'Published',
+            showTag: handlers.resolvePublishedState(widgetId),
+            colour: TagColour.GREEN,
+          },
+          {
+            value: 'Draft',
+            showTag: !handlers.resolvePublishedState(widgetId),
+            colour: TagColour.ORANGE,
+          },
+          {
+            value: 'Unpublished Changes',
+            showTag: handlers.resolveUnPublishedChanges(widgetId),
+            colour: TagColour.ORANGE,
+          },
+        ]}
       />
+
       <div className={tw(S.ButtonBoxCss)}>
         <Button
           icon={{ icon: 'pencil', ariaLabel: 'edit' }}
@@ -55,6 +73,15 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
           >
             Publish
           </Button>
+        )}
+        {handlers.resolveUnPublishedChanges(widgetId) && (
+          <Tooltip content="Publish Changes" size={SizeType.L}>
+            <Button
+              icon={{ icon: 'tick', ariaLabel: 'publish' }}
+              buttonVariant={ButtonVariant.PRODUCT}
+              onClick={(e) => handlers.onPublish(e, widgetId)}
+            />
+          </Tooltip>
         )}
       </div>
       {children}

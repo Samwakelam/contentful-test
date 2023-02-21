@@ -23,6 +23,8 @@ const parseEntry = (entry: any): Widget => {
     id: sys.id,
     _template: sys.contentType.sys.id,
     published: entry.isPublished(),
+    publishedAt: sys.publishedAt,
+    updatedAt: sys.updatedAt,
     ...properties,
   };
 };
