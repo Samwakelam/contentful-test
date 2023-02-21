@@ -144,3 +144,19 @@ You get an entry and apply the `delete()` method. This is throwing an error in m
 The Web app only pulls content from the [Delivery Api](#delivery-api) meaning that only contentful's published content will show in the web app.
 
 An entry has [publish](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/Entry.html#.publish) and [unpublish](https://contentful.github.io/contentful-management.js/contentful-management/5.0.0-beta2/Entry.html#.unpublish) methods.
+
+**Issues** Typescript!! The payload from contentful-management and contentful are both different for Entry.
+
+10. Typescript the Entry properly
+
+Created an additional service layer that will accept a `contentful-management` entry and convert it to a Widget. This means there is no meeting of Entry types in the library and the parser is inside the service.
+
+11. Editing / updating Widget
+
+The Entry Model has a method `update` where you can amend the entry fields followed by using the method.
+
+**Gotcha** The update is not published to the delivery API. This means that the changes will not display on the web-app.
+
+**Solution** The entry payload has published at and updatedAt properties which I have passed to my Widget object. Looking to see if the updated date exceeds the published date adds a new publishChanges Button and UnPublished Changes Tag.
+
+It is new addition as the widget is still published with old content on the web-app and needs this indicator for the user.

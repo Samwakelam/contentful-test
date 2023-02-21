@@ -74,7 +74,6 @@ export const renderWidgets = (
   editorComponent?: React.FC<any>
 ) => {
   const map = widgets.map((widget) => {
-    console.log('widget: ', widget);
     const _widget = isWidget(widget) ? widget : parseEntry(widget);
 
     return renderWidget(_widget, region, defaultRegion, editorComponent);

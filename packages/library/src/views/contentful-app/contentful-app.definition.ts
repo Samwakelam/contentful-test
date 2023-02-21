@@ -18,19 +18,22 @@ export type ModelProps = {
 };
 
 export type ContentfulAppHandlers = {
-  addEntry: (model: ModelProps) => void;
-  deleteEntry: (entryId: string) => void;
+  addWidget: (model: ModelProps) => void;
+  deleteWidget: (widgetId: string) => void;
+  getWidget: (widgetId: string) => Widget | null;
   onModalAction: (modal: ContentfulAppState['openModal']) => void;
   onPublish: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    entryId: string
+    widgetId: string
   ) => void;
   onRegionSelect: (region: Region) => void;
   onUnPublish: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    entryId: string
+    widgetId: string
   ) => void;
-  resolvePublishedState: (entryId: string) => boolean;
+  resolvePublishedState: (widgetId: string) => boolean;
+  resolveUnPublishedChanges: (widgetId: string) => boolean;
+  updateWidget: (model: { [key: string]: any }) => void;
 };
 
 export type ContentfulAppContextProps = {

@@ -30,7 +30,6 @@ export const useConfirmModal = ({
     try {
       setState((prevState) => ({ ...prevState, isProcessing: true }));
 
-      console.log('widgetId: ', widgetId);
       await onDelete(widgetId, () => {});
       onClose();
     } catch (error) {

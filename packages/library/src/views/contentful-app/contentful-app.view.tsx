@@ -1,14 +1,13 @@
 import { useMemo } from 'react';
 import { tw } from 'twind';
 
-import { EntryService } from '@sam/contentful';
 import { Languages } from '@sam/types';
 
 import {
   Button,
   Modal,
   Placeholder,
-  AddModelModal,
+  EntryModal,
   Dropdown,
   TriggerType,
   ActiveStyleType,
@@ -22,8 +21,9 @@ import {
   useContentfulApp,
 } from './contentful-app.view-model';
 
-import * as S from './contentful-app.styles';
 import { Editor } from './_partials';
+
+import * as S from './contentful-app.styles';
 
 export const ContentfulAppComponent = ({}: ContentfulAppProps) => {
   const { state, handlers } = useContentfulApp();
@@ -75,9 +75,10 @@ export const ContentfulAppComponent = ({}: ContentfulAppProps) => {
         onRequestClose={() => handlers.onModalAction(null)}
         isOpen={state.openModal === 'add'}
       >
-        <AddModelModal
+        <EntryModal
+          type="create"
           onClose={() => handlers.onModalAction(null)}
-          dispatches={{ onAdd: handlers.addEntry }}
+          dispatches={{ onAdd: handlers.addWidget }}
         />
       </Modal>
     </div>

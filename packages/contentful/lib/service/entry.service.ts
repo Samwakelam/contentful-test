@@ -18,6 +18,7 @@ export class EntryService {
       EntryProps<KeyValueMap>
     > = await environment.getEntries(query);
 
+    console.log('entries.items: ', entries.items);
     return entries.items;
   }
 
@@ -33,27 +34,33 @@ export class EntryService {
     }
   }
 
-  async create(model: {
-    name: { 'en-US': string };
-    description: { 'en-US': string; 'en-GB'?: string };
-  }) {
+  async create(content_type: string, fields: { [key: string]: unknown }) {
     try {
       const environment = await getEnvironment();
 
-      const data = {
+      const entry: Entry = await environment.createEntry(content_type, {
         fields: {
-          ...model,
+          ...fields,
         },
-      };
+      });
 
-      await environment.createEntry('samTestModel', data);
+      return entry;
     } catch (error) {
       throw new Error(`EntryService create: ${error}`);
     }
   }
 
-  async update() {
-    const environment = await getEnvironment();
+  async update(id: string, fields: { [key: string]: unknown }) {
+    try {
+      const entry: Entry = await this.get(id);
+      entry.fields = fields;
+
+      const updatedEntry = await entry.update();
+
+      return updatedEntry;
+    } catch (error) {
+      throw new Error(`EntryService update: ${error}`);
+    }
   }
 
   async del(id: string, query?: QueryOptions) {
@@ -98,5 +105,3 @@ export class EntryService {
     return locales;
   }
 }
-
-export type { Entry } from 'contentful-management';
