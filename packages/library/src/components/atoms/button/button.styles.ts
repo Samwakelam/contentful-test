@@ -1,5 +1,5 @@
 import { CSSRules, Directive, theme } from 'twind';
-import { css, apply } from 'twind/css';
+import { css, apply, keyframes } from 'twind/css';
 
 import tokens from '../../../styles/tokens';
 
@@ -27,12 +27,11 @@ export const buttonCss: Directive<CSSRules> = css({
     borderRadius: theme('spacing.32'),
     fontSize: tokens.text.body.small,
     fontFamily: theme('fontFamily.montserrat'),
+    position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    gap: theme('spacing.8'),
-    position: 'relative',
+    justifyContent: 'center',
   },
-
   '&:hover': {
     backgroundColor: theme('colors.neutral.700'),
   },
@@ -43,16 +42,25 @@ export const buttonCss: Directive<CSSRules> = css({
   },
   '&:disabled': {
     backgroundColor: theme('colors.neutral.300'),
+    color: theme('colors.neutral.50'),
   },
-
-  '& i': {
-    textAlign: 'center',
+  '&:disabled:hover': {
+    backgroundColor: theme('colors.neutral.300'),
+    color: theme('colors.neutral.50'),
   },
   '& svg': {
     height: tokens.text.body.small,
   },
   '& path': {
     fill: theme('colors.neutral.50'),
+  },
+});
+
+export const ButtonContentContainerCss = css({
+  '&': {
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme('spacing.8'),
   },
 });
 
@@ -132,5 +140,29 @@ export const UnstyledButtonCss: Directive<CSSRules> = css({
   },
   '& path': {
     fill: theme('colors.neutral.900'),
+  },
+});
+
+export const Spin = keyframes({
+  from: {
+    transform: 'rotate(0deg)',
+  },
+  to: {
+    transform: 'rotate(359deg)',
+  },
+});
+
+export const LoadingCss = css({
+  '&': {
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  },
+  '& svg': {
+    animation: '1s linear infinite',
+    animationName: Spin,
+  },
+  '& ~ span': {
+    visibility: 'hidden',
   },
 });

@@ -16,7 +16,6 @@ export type EntryModalState = {
   nameInput: Hook<InputGroupState, InputGroupHandlers>;
   usDescriptionInput: Hook<InputGroupState, InputGroupHandlers>;
   gbDescriptionInput: Hook<InputGroupState, InputGroupHandlers>;
-
   isProcessing: boolean;
 };
 

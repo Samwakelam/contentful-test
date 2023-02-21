@@ -63,7 +63,7 @@ export default {
       </Button>
     );
   },
-  ['With Icon']: () => {
+  ['Icon at Start']: () => {
     const [Icon] = useSelect('Icon', {
       options: ['bin', 'clock', 'cross', 'pencil', 'plus'],
     });
@@ -71,13 +71,13 @@ export default {
       <Button
         onClick={() => alert('click')}
         buttonVariant={ButtonVariant.PRIMARY}
-        startIcon={{ icon: Icon, ariaLabel: 'plus' }}
+        startIcon={{ icon: Icon, ariaLabel: 'icon' }}
       >
         Primary Button
       </Button>
     );
   },
-  ['Disabled']: () => {
+  ['Icon at End']: () => {
     const [Icon] = useSelect('Icon', {
       options: ['bin', 'clock', 'cross', 'pencil', 'plus'],
     });
@@ -85,9 +85,53 @@ export default {
       <Button
         onClick={() => alert('click')}
         buttonVariant={ButtonVariant.PRIMARY}
-        disabled
+        endIcon={{ icon: Icon, ariaLabel: 'icon' }}
       >
+        Primary Button
+      </Button>
+    );
+  },
+  ['Icon Only']: () => {
+    const [Icon] = useSelect('Icon', {
+      options: ['bin', 'clock', 'cross', 'pencil', 'plus'],
+    });
+    return (
+      <Button
+        onClick={() => alert('click')}
+        buttonVariant={ButtonVariant.PRIMARY}
+        icon={{ icon: Icon, ariaLabel: 'icon' }}
+      />
+    );
+  },
+  ['Disabled']: () => {
+    const [Variant] = useSelect('Variant', {
+      options: [
+        ButtonVariant.PRIMARY,
+        ButtonVariant.SECONDARY,
+        ButtonVariant.TERTIARY,
+        ButtonVariant.SUCCESS,
+        ButtonVariant.PRODUCT,
+      ],
+    });
+    return (
+      <Button onClick={() => alert('click')} buttonVariant={Variant} disabled>
         Disabled Button
+      </Button>
+    );
+  },
+  ['Loading']: () => {
+    const [Variant] = useSelect('Variant', {
+      options: [
+        ButtonVariant.PRIMARY,
+        ButtonVariant.SECONDARY,
+        ButtonVariant.TERTIARY,
+        ButtonVariant.SUCCESS,
+        ButtonVariant.PRODUCT,
+      ],
+    });
+    return (
+      <Button onClick={() => alert('click')} buttonVariant={Variant} loading>
+        Loading Button
       </Button>
     );
   },
