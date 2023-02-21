@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { tw } from 'twind';
 
 import {
@@ -20,6 +21,7 @@ import * as S from './editor.styles';
 
 export const Editor = ({ widgetId, children }: EditorProps) => {
   const { state, handlers } = useContentfulApp();
+  const [processing, setProcessing] = useState<string | null>(null);
 
   const widget = handlers.getWidget(widgetId) ?? undefined;
 
@@ -61,7 +63,12 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
           <Button
             startIcon={{ icon: 'cross', ariaLabel: 'un-publish' }}
             className={tw(S.UnPublishButtonCss)}
-            onClick={(e) => handlers.onUnPublish(e, widgetId)}
+            onClick={async (e) => {
+              setProcessing('unpublish');
+              await handlers.onUnPublish(e, widgetId);
+              setProcessing(null);
+            }}
+            loading={processing === 'unpublish'}
           >
             UnPublish
           </Button>
@@ -69,7 +76,12 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
           <Button
             startIcon={{ icon: 'tick', ariaLabel: 'publish' }}
             buttonVariant={ButtonVariant.SUCCESS}
-            onClick={(e) => handlers.onPublish(e, widgetId)}
+            onClick={async (e) => {
+              setProcessing('publish');
+              await handlers.onPublish(e, widgetId);
+              setProcessing(null);
+            }}
+            loading={processing === 'publish'}
           >
             Publish
           </Button>
@@ -79,7 +91,12 @@ export const Editor = ({ widgetId, children }: EditorProps) => {
             <Button
               icon={{ icon: 'tick', ariaLabel: 'publish' }}
               buttonVariant={ButtonVariant.PRODUCT}
-              onClick={(e) => handlers.onPublish(e, widgetId)}
+              onClick={async (e) => {
+                setProcessing('publishChanges');
+                await handlers.onPublish(e, widgetId);
+                setProcessing(null);
+              }}
+              loading={processing === 'publishChanges'}
             />
           </Tooltip>
         )}

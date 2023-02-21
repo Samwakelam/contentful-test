@@ -50,6 +50,7 @@ export const EntryModal = ({
       <Button
         buttonVariant={ButtonVariant.PRIMARY}
         disabled={handlers.resolveIsButtonDisabled() || state.isProcessing}
+        loading={state.isProcessing}
         {...handlers.resolveSubmitButton()}
       />
     </div>

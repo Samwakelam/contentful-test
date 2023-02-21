@@ -44,6 +44,7 @@ export const ConfirmModal = ({
           onClick={(e) => handlers.resolveOnClickMethod(e)}
           {...handlers.resolveConfirmButton()}
           disabled={state.isProcessing}
+          loading={state.isProcessing}
         />
         <Button
           onClick={() => handlers.resolveAction(customContent?.decline?.action)}
