@@ -15,6 +15,7 @@ export const Button = ({
   startIcon,
   endIcon,
   disabled = false,
+  loading = false,
 }: ButtonProps) => {
   return (
     <button
@@ -25,10 +26,17 @@ export const Button = ({
       )}
       disabled={disabled}
     >
-      {startIcon && <Icon {...startIcon} />}
-      {children && children}
-      {icon && <Icon {...icon} />}
-      {endIcon && <Icon {...endIcon} />}
+      {loading && (
+        <span className={tw(S.LoadingCss)}>
+          {loading && <Icon icon="spinner" ariaLabel="loading" />}
+        </span>
+      )}
+      <span className={tw(S.ButtonContentContainerCss)} aria-hidden={loading}>
+        {startIcon && <Icon {...startIcon} />}
+        {children && children}
+        {icon && <Icon {...icon} />}
+        {endIcon && <Icon {...endIcon} />}
+      </span>
     </button>
   );
 };

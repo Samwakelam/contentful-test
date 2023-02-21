@@ -20,4 +20,5 @@ export type ButtonProps = {
   endIcon?: IconProps;
   icon?: IconProps;
   disabled?: boolean;
+  loading?: boolean;
 };
