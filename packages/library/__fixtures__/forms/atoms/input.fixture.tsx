@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { Input } from '../../../src';
 
 export default {

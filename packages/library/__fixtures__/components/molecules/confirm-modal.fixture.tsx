@@ -9,7 +9,6 @@ export default {
         <ConfirmModal
           type={ConfirmModalType.DELETE}
           dispatches={{}}
-          item={''}
           onClose={() => {}}
         />
       </Modal>
@@ -25,7 +24,6 @@ export default {
               /* Will not process dispatch as there is no pageContent available */
             }
           }
-          item={''}
           onClose={() => {}}
         />
       </Modal>
@@ -36,7 +34,6 @@ export default {
       <Modal onRequestClose={() => {}} isOpen={true}>
         <ConfirmModal
           type={ConfirmModalType.PUBLISH}
-          item={''}
           dispatches={{
             onPublishPage: async (item, isSuccess) => {
               alert(`You have published page ${item.id}`);
@@ -53,7 +50,6 @@ export default {
       <Modal onRequestClose={() => {}} isOpen={true}>
         <ConfirmModal
           type={ConfirmModalType.LEAVE}
-          item={''}
           dispatches={
             {
               /* Will not process dispatch as there is no pageContent available */

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { useState } from 'react';
 import { CheckboxGroup } from '../../../src/forms/molecules/checkbox-group';
 

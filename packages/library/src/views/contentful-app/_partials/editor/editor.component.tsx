@@ -10,10 +10,11 @@ import {
   Modal,
   SizeType,
   Tooltip,
+  TagColour,
+  Tags,
 } from '../../../../components';
 
 import { useContentfulApp } from '../../contentful-app.view-model';
-import { TagColour, Tags } from '../tags';
 
 import { EditorProps } from './editor.definition';
 

@@ -20,7 +20,7 @@ export type WidgetId = string;
 
 export type ConfirmModalProps = {
   type: ConfirmModalType;
-  widgetId: WidgetId;
+  widgetId?: WidgetId;
   dispatches: DispatchesType;
   customContent?: CustomContentProps;
   onClose: () => void;
