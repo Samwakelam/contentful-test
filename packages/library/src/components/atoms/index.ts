@@ -6,5 +6,6 @@ export * from './modal';
 export * from './placeholder';
 export * from './side-menu-link';
 export * from './slide-out-drawer';
+export * from './tags';
 export * from './tooltip';
 export * from './user-image';
