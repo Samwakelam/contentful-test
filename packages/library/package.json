@@ -6,7 +6,10 @@
   "types": "./index.ts",
   "scripts": {
     "dev": "vite serve --port=8080 & cosmos",
-    "test": "vitest --ui",
+    "test": "vitest --run",
+    "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest",
     "lint": "eslint *.ts*",
     "cosmos:export": "cosmos-export"
   },
@@ -20,11 +23,13 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "12.1.5",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@types/react-modal": "^3.13.1",
     "@vitejs/plugin-react": "^2.2.0",
     "@vitest/ui": "^0.24.5",
+    "jsdom": "^21.1.0",
     "next": "^13.0.5",
     "react": "^18.2.0",
     "react-cosmos": "^5.7.2",

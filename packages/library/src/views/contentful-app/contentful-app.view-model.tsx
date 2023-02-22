@@ -14,7 +14,7 @@ import {
   ContentfulAppHandlers,
   ContentfulAppState,
 } from './contentful-app.definition';
-import { useContentfulAppService } from '../../lib/use-contentful-app/use-contentful-app.service';
+import { useContentfulAppService } from '../../hooks/use-contentful-app/use-contentful-app.service';
 
 const initialState: ContentfulAppState = {
   openModal: null,
