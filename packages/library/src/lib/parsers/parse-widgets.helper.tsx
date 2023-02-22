@@ -1,10 +1,23 @@
-import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 
 import { isWidget, RegionCode, Widget } from '@sam/types';
 
 import { SamTestModel } from '../../components';
-import { parseEntry } from './parse-entry';
+import { parseEntry } from './parse-entry.helper';
 
+/**
+ * @function parseWidget
+ *
+ * @description - This function accepts a Widget Type which possibly has localised entries for each property
+ *                and returns a plain object where each property has a single value and can be used in a
+ *                specified language.
+ *
+ * @param { Widget } widget
+ * @param { RegionCode } region
+ * @param { RegionCode } defaultRegion
+ *
+ * @returns { Object }
+ */
 export const parseWidget = (
   widget: Widget,
   region: RegionCode,

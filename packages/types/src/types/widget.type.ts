@@ -2,6 +2,6 @@ export type Widget = {
   _template?: string;
   id: string;
   published?: boolean;
-  publishedAt?: Date;
-  updatedAt?: Date;
+  publishedAt?: string;
+  updatedAt?: string;
 } & Record<string, any>;
