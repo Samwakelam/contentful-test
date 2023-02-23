@@ -26,61 +26,29 @@ import fixture16 from './../__fixtures__/views/web-app.fixture.tsx';
 import decorator0 from './../__fixtures__/cosmos.decorator.tsx';
 
 export const rendererConfig = {
-  port: 5001,
+  "port": 5001
 };
 
 export const fixtures = {
-  '__fixtures__/components/atoms/bar.fixture.tsx': {
-    module: { default: fixture0 },
-  },
-  '__fixtures__/components/atoms/button.fixture.tsx': {
-    module: { default: fixture1 },
-  },
-  '__fixtures__/components/atoms/card.fixture.tsx': {
-    module: { default: fixture2 },
-  },
-  '__fixtures__/components/atoms/dropdown.fixture.tsx': {
-    module: { default: fixture3 },
-  },
-  '__fixtures__/components/atoms/modal.fixture.tsx': {
-    module: { default: fixture4 },
-  },
-  '__fixtures__/components/atoms/placeholder.fixture.tsx': {
-    module: { default: fixture5 },
-  },
-  '__fixtures__/components/atoms/side-menu-link.fixture.tsx': {
-    module: { default: fixture6 },
-  },
-  '__fixtures__/components/atoms/slide-out-drawer.fixture.tsx': {
-    module: { default: fixture7 },
-  },
-  '__fixtures__/components/atoms/tags.fixture.tsx': {
-    module: { default: fixture8 },
-  },
-  '__fixtures__/components/atoms/tooltip.fixture.tsx': {
-    module: { default: fixture9 },
-  },
-  '__fixtures__/components/molecules/confirm-modal.fixture.tsx': {
-    module: { default: fixture10 },
-  },
-  '__fixtures__/forms/atoms/input.fixture.tsx': {
-    module: { default: fixture11 },
-  },
-  '__fixtures__/forms/atoms/toggle.fixture.tsx': {
-    module: { default: fixture12 },
-  },
-  '__fixtures__/forms/molecules/checkbox-group.fixture.tsx': {
-    module: { default: fixture13 },
-  },
-  '__fixtures__/forms/molecules/input-group.fixture.tsx': {
-    module: { default: fixture14 },
-  },
-  '__fixtures__/views/contenful-app.fixture.tsx': {
-    module: { default: fixture15 },
-  },
-  '__fixtures__/views/web-app.fixture.tsx': { module: { default: fixture16 } },
+  '__fixtures__/components/atoms/bar.fixture.tsx': { module: { default: fixture0 } },
+  '__fixtures__/components/atoms/button.fixture.tsx': { module: { default: fixture1 } },
+  '__fixtures__/components/atoms/card.fixture.tsx': { module: { default: fixture2 } },
+  '__fixtures__/components/atoms/dropdown.fixture.tsx': { module: { default: fixture3 } },
+  '__fixtures__/components/atoms/modal.fixture.tsx': { module: { default: fixture4 } },
+  '__fixtures__/components/atoms/placeholder.fixture.tsx': { module: { default: fixture5 } },
+  '__fixtures__/components/atoms/side-menu-link.fixture.tsx': { module: { default: fixture6 } },
+  '__fixtures__/components/atoms/slide-out-drawer.fixture.tsx': { module: { default: fixture7 } },
+  '__fixtures__/components/atoms/tags.fixture.tsx': { module: { default: fixture8 } },
+  '__fixtures__/components/atoms/tooltip.fixture.tsx': { module: { default: fixture9 } },
+  '__fixtures__/components/molecules/confirm-modal.fixture.tsx': { module: { default: fixture10 } },
+  '__fixtures__/forms/atoms/input.fixture.tsx': { module: { default: fixture11 } },
+  '__fixtures__/forms/atoms/toggle.fixture.tsx': { module: { default: fixture12 } },
+  '__fixtures__/forms/molecules/checkbox-group.fixture.tsx': { module: { default: fixture13 } },
+  '__fixtures__/forms/molecules/input-group.fixture.tsx': { module: { default: fixture14 } },
+  '__fixtures__/views/contenful-app.fixture.tsx': { module: { default: fixture15 } },
+  '__fixtures__/views/web-app.fixture.tsx': { module: { default: fixture16 } }
 };
 
 export const decorators = {
-  '__fixtures__/cosmos.decorator.tsx': decorator0,
+  '__fixtures__/cosmos.decorator.tsx': decorator0
 };

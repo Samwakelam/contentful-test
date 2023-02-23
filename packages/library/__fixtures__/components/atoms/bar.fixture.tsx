@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable import/no-anonymous-default-export */
 import { useSelect } from 'react-cosmos/fixture';
 
@@ -22,6 +23,7 @@ export default {
         }}
       >
         <h1>A basic Bar</h1>
+        <p>Resize the window to see the menu button's behavior</p>
       </Bar>
     );
   },
