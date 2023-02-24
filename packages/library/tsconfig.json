@@ -19,6 +19,6 @@
     "target": "ESNext",
     "jsx": "react-jsx"
   },
-  "include": ["."],
+  "include": [".", "index.d.ts"],
   "exclude": ["dist", "build", "node_modules"]
 }

@@ -94,10 +94,6 @@ describe('dropdown.component', () => {
 
 describe('resolveActiveStyle', () => {
   it('should return css object for bold font', () => {
-    console.log(
-      'resolveActiveStyle: ',
-      resolveActiveStyle([ActiveStyleType.BOLD], true)
-    );
     const resolve = resolveActiveStyle([ActiveStyleType.BOLD], true);
 
     expect(resolve).toEqual(['font-bold']);

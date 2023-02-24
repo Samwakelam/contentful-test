@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ReactElement } from 'react';
 import { apply, tw } from 'twind';
 import { UserImageProps } from './user-image.definition';
@@ -18,6 +19,7 @@ export const UserImage = ({
             apply(S.UserImageCss, grayscale && S.GrayscaleCss),
             className
           )}
+          alt="user image"
         />
       ) : (
         <img
@@ -26,6 +28,7 @@ export const UserImage = ({
             apply(S.UserImageCss, grayscale && S.GrayscaleCss),
             className
           )}
+          alt="placeholder user image"
         />
       )}
     </>

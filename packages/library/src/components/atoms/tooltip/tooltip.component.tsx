@@ -47,7 +47,7 @@ export const Tooltip = ({
   );
 };
 
-const resolveTipDirection = (
+export const resolveTipDirection = (
   direction: DirectionType
 ): Directive<CSSRules> | Directive<CSSRules>[] => {
   switch (direction) {
@@ -69,7 +69,7 @@ const resolveTipDirection = (
   }
 };
 
-const resolveTipSize = (size?: SizeType): string => {
+export const resolveTipSize = (size?: SizeType): string => {
   if (!size) return 'unset';
   switch (size) {
     case SizeType.S: {
