@@ -8,7 +8,7 @@ import { themeConfig, setup, tw } from '@sam/theme/twind';
 
 import '../styles/reset.css';
 
-function App({ Component, pageProps }: AppProps): JSX.Element {
+function App({ Component, pageProps }: any): JSX.Element {
   setup(themeConfig);
   registerWidgets();
 

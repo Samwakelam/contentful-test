@@ -1,4 +1,4 @@
-import { css, CSSRules, Directive, theme } from 'twind/css';
+import { css, CSSRules, Directive, theme } from '@sam/theme/twind';
 
 export const BarCss: Directive<CSSRules> = css({
   '&': {
