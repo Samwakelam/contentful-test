@@ -1,7 +1,7 @@
 import { HomeExtensionSDK } from '@contentful/app-sdk';
 import { /* useCMA, */ useSDK } from '@contentful/react-apps-toolkit';
-import { tw } from 'twind';
 
+import { tw } from '@sam/theme/twind';
 import { Card } from '@sam/library';
 
 import * as S from './Home.styles';

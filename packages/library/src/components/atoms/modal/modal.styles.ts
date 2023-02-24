@@ -1,4 +1,4 @@
-import { css, theme } from 'twind/css';
+import { css, theme } from '@sam/theme/twind';
 
 export const ModalStyles = ``;
 
