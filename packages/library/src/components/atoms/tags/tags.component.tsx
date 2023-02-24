@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
-import { apply, tw } from 'twind';
+
+import { tw, apply } from '@sam/theme/twind';
 
 import { TagProps } from './tags.definition';
 

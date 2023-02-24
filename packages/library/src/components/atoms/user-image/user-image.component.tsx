@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { ReactElement } from 'react';
-import { apply, tw } from 'twind';
+
+import { tw, apply } from '@sam/theme/twind';
+
 import { UserImageProps } from './user-image.definition';
 
 import * as S from './user-image.styles';

@@ -1,5 +1,6 @@
 import { ReactElement, useState } from 'react';
-import { CSSRules, Directive, tw } from 'twind';
+
+import { CSSRules, Directive, tw } from '@sam/theme/twind';
 
 import { DirectionType, TooltipProps, SizeType } from './tooltip.definition';
 

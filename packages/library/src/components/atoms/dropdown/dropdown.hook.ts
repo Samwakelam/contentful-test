@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { tw } from 'twind';
 
+import { tw } from '@sam/theme/twind';
 import { Hook } from '@sam/types';
 
 import { ButtonVariant } from '../button';

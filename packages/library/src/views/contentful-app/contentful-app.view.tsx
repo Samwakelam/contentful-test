@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { tw } from 'twind';
+import { tw } from '@sam/theme/twind';
 
 import { Languages } from '@sam/types';
 

@@ -6,9 +6,6 @@ import { SDKProvider } from '@contentful/react-apps-toolkit';
 import App from './App';
 import LocalhostWarning from './components/LocalhostWarning';
 
-// import './styles/global.css';
-// import './styles/tokens.css';
-
 const root = document.getElementById('root');
 
 if (import.meta.env.DEV && window.self === window.top) {

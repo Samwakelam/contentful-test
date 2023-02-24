@@ -1,7 +1,12 @@
-import { CSSRules, Directive, theme } from 'twind';
-import { css, apply, keyframes } from 'twind/css';
-
-import tokens from '../../../styles/tokens';
+import {
+  CSSRules,
+  Directive,
+  theme,
+  css,
+  apply,
+  keyframes,
+} from '@sam/theme/twind';
+import { font, spacing } from '@sam/theme';
 
 export const buttonStyles: Directive<CSSRules> = apply`
     bg(
@@ -25,7 +30,7 @@ export const buttonCss: Directive<CSSRules> = css({
     paddingLeft: theme('spacing.32'),
     paddingRight: theme('spacing.32'),
     borderRadius: theme('spacing.32'),
-    fontSize: tokens.text.body.small,
+    fontSize: font.text.body.small,
     fontFamily: theme('fontFamily.montserrat'),
     position: 'relative',
     display: 'flex',
@@ -36,7 +41,7 @@ export const buttonCss: Directive<CSSRules> = css({
     backgroundColor: theme('colors.neutral.700'),
   },
   '&:focus': {
-    outline: `${tokens.spacing[2]} solid`,
+    outline: `${spacing[2]} solid`,
     outlineColor: theme('colors.pink.500'),
     outlineOffset: theme('spacing.2'),
   },
@@ -49,7 +54,7 @@ export const buttonCss: Directive<CSSRules> = css({
     color: theme('colors.neutral.50'),
   },
   '& svg': {
-    height: tokens.text.body.small,
+    height: font.text.body.small,
   },
   '& path': {
     fill: theme('colors.neutral.50'),

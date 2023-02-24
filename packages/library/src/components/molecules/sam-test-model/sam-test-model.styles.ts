@@ -1,9 +1,9 @@
-import { css, theme } from 'twind/css';
-import tokens from '../../../styles/tokens';
+import { css } from '@sam/theme/twind';
+import { font } from '@sam/theme';
 
 export const SamTestModelCss = css({
   '& p:last-child': {
-    fontSize: tokens.text.body.small,
+    fontSize: font.text.body.small,
     display: 'none',
   },
 });

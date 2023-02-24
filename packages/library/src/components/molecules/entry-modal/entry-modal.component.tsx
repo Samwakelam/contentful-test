@@ -1,4 +1,4 @@
-import { tw } from 'twind';
+import { tw } from '@sam/theme/twind';
 
 import { InputGroup } from '../../../forms';
 import { Button, ButtonVariant } from '../../atoms';

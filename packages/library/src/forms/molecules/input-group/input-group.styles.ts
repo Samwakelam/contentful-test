@@ -1,5 +1,5 @@
-import { css, theme } from 'twind/css';
-import tokens from '../../../styles/tokens';
+import { css, theme } from '@sam/theme/twind';
+import { font } from '@sam/theme';
 
 export const InputGroupCss = css({
   '&': {
@@ -23,11 +23,11 @@ export const IconCss = css({
     position: 'absolute',
     top: theme('spacing.12'),
     right: theme('spacing.40'),
-    height: tokens.text.body.small,
-    width: tokens.lineHeight.body.small,
+    height: font.text.body.small,
+    width: font.lineHeight.body.small,
   },
   '& svg': {
-    height: tokens.lineHeight.body.small,
+    height: font.lineHeight.body.small,
   },
 });
 
@@ -76,7 +76,7 @@ export const ListItemsCss = css({
     color: theme('colors.neutral.900'),
     width: '100%',
     minHeight: 'calc(16px + 40px)',
-    marginTop: tokens.lineHeight.body.small,
+    marginTop: font.lineHeight.body.small,
   },
 });
 

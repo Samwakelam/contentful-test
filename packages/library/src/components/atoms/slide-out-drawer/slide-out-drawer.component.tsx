@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useRef } from 'react';
 import ReactModal from 'react-modal';
-import { apply, tw } from 'twind';
+
+import { tw, apply } from '@sam/theme/twind';
 
 import { Button, ButtonVariant } from '../button';
 

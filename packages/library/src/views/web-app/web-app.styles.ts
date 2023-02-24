@@ -1,6 +1,6 @@
-import { css, CSSRules, Directive, theme } from 'twind/css';
+import { css, CSSRules, Directive, theme } from '@sam/theme/twind';
 
-import tokens from '../../styles/tokens';
+import { font } from '@sam/theme';
 
 export const WebAppCss: Directive<CSSRules> = css({
   '&': {
@@ -21,8 +21,8 @@ export const BoxCss: Directive<CSSRules> = css({
 export const SubtitleCss: Directive<CSSRules> = css({
   '&': {
     color: theme('colors.neutral.600'),
-    fontSize: tokens.text.heading[14],
-    lineHeight: tokens.lineHeight.heading[14],
+    fontSize: font.text.heading[14],
+    lineHeight: font.lineHeight.heading[14],
   },
 });
 
