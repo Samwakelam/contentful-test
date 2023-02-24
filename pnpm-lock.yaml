@@ -20,6 +20,7 @@ importers:
       '@contentful/f36-tokens': 4.0.1
       '@contentful/react-apps-toolkit': 1.2.2
       '@sam/library': workspace:*
+      '@sam/theme': workspace:*
       '@testing-library/react': 12.1.5
       '@types/node': 18.0.3
       '@types/react': 17.0.47
@@ -31,7 +32,6 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2
       react-router-dom: ^6.4.3
-      twind: ^0.16.17
       typescript: 4.7.4
       vite: 3.0.0
       vitest: 0.18.0
@@ -41,12 +41,12 @@ importers:
       '@contentful/f36-tokens': 4.0.1
       '@contentful/react-apps-toolkit': 1.2.2_react@17.0.2
       '@sam/library': link:../../packages/library
+      '@sam/theme': link:../../packages/theme
       contentful-management: 10.7.0
       emotion: 10.0.27
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-router-dom: 6.8.1_react-dom@17.0.2+react@17.0.2
-      twind: 0.16.19_typescript@4.7.4
     devDependencies:
       '@contentful/app-scripts': 1.1.11
       '@testing-library/react': 12.1.5_react-dom@17.0.2+react@17.0.2
@@ -63,6 +63,7 @@ importers:
     specifiers:
       '@babel/core': ^7.0.0
       '@sam/library': workspace:*
+      '@sam/theme': workspace:*
       '@sam/types': workspace:*
       '@twind/next': ^1.0.10
       '@types/node': ^17.0.12
@@ -75,17 +76,16 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       tsconfig: workspace:*
-      twind: ^0.16.17
       typescript: ^4.5.3
     dependencies:
       '@sam/library': link:../../packages/library
+      '@sam/theme': link:../../packages/theme
       '@sam/types': link:../../packages/types
-      '@twind/next': 1.0.10_d7041a3caa69fdc49fcbc8e42fda4899
+      '@twind/next': 1.0.10_608f29041ed2e11569d439a97e8695e7
       contentful: 9.3.0
       next: 13.1.6_7a6ce7c903601ca00e748dc002e0c97f
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      twind: 0.16.19_typescript@4.9.5
     devDependencies:
       '@babel/core': 7.20.12
       '@types/node': 17.0.45
@@ -167,7 +167,6 @@ importers:
       '@sam/theme': workspace:*
       '@sam/types': workspace:*
       '@testing-library/react': 12.1.5
-      '@twind/content': ^0.1.0
       '@types/react': ^18.0.24
       '@types/react-dom': ^18.0.8
       '@types/react-modal': ^3.13.1
@@ -181,11 +180,8 @@ importers:
       react-dom: ^18.2.0
       react-modal: ^3.16.1
       react-router-dom: ^6.4.3
-      tailwind-colors: ^1.1.0
-      tailwind-merge: ^1.8.0
       ts-loader: ^9.4.1
       ts-mockito: ^2.6.1
-      twind: ^0.16.17
       typescript: ^4.8.4
       vite: ^3.2.2
       vite-tsconfig-paths: ^4.0.3
@@ -196,11 +192,7 @@ importers:
       '@sam/icons': link:../icons
       '@sam/theme': link:../theme
       '@sam/types': link:../types
-      '@twind/content': 0.1.0_twind@0.16.19+typescript@4.9.5
       contentful: 9.3.0
-      tailwind-colors: 1.1.0
-      tailwind-merge: 1.9.1
-      twind: 0.16.19_typescript@4.9.5
     devDependencies:
       '@testing-library/react': 12.1.5_react-dom@18.2.0+react@18.2.0
       '@types/react': 18.0.27
@@ -225,16 +217,21 @@ importers:
 
   packages/theme:
     specifiers:
+      '@twind/content': ^0.1.0
       '@types/react': ^18.0.24
       '@vitejs/plugin-react': ^2.2.0
       '@vitest/ui': ^0.24.5
       react: ^18.2.0
       react-cosmos: ^5.7.2
       ts-loader: ^9.4.1
+      twind: ^0.16.17
       typescript: ^4.8.4
       vite: ^3.2.2
       vitest: ^0.24.5
       webpack: ^5.74.0
+    dependencies:
+      '@twind/content': 0.1.0_twind@0.16.19+typescript@4.9.5
+      twind: 0.16.19_typescript@4.9.5
     devDependencies:
       '@types/react': 18.0.27
       '@vitejs/plugin-react': 2.2.0_vite@3.2.5
@@ -1710,7 +1707,7 @@ packages:
       typescript: 4.9.5
     dev: false
 
-  /@twind/next/1.0.10_d7041a3caa69fdc49fcbc8e42fda4899:
+  /@twind/next/1.0.10_608f29041ed2e11569d439a97e8695e7:
     resolution: {integrity: sha512-6ctrS10JoZNK2NSj8UZ01qsPNIdEF04xZqTAuSLovD+UrMqYo3XYkT2OHovOxSkI+I3Pclx34wdfNWNK+C/+jQ==}
     engines: {node: '>=10.13'}
     peerDependencies:
@@ -1724,7 +1721,6 @@ packages:
     dependencies:
       next: 13.1.6_7a6ce7c903601ca00e748dc002e0c97f
       react: 18.2.0
-      twind: 0.16.19_typescript@4.9.5
       typescript: 4.9.5
     dev: false
 
@@ -6409,14 +6405,6 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
 
-  /tailwind-colors/1.1.0:
-    resolution: {integrity: sha512-U3637S7IbJu72Qzq2oCzVTvmXkuD6fgX5iBgzfBTZq1OTcLIbe3tGKCPfA6A/ugeXsnjhGJj4ZExjU217WMzpQ==}
-    dev: false
-
-  /tailwind-merge/1.9.1:
-    resolution: {integrity: sha512-ED9MkiUHlmfh58EC1xHRqXcH1IQyRtmDP0AmXlugYkP2tvfu7ejtjFEHJLJt93mQ7ZJkcqSIgm9M394bq5vOJg==}
-    dev: false
-
   /tapable/2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
@@ -6681,21 +6669,6 @@ packages:
       turbo-windows-64: 1.8.2
       turbo-windows-arm64: 1.8.2
     dev: true
-
-  /twind/0.16.19_typescript@4.7.4:
-    resolution: {integrity: sha512-/9H7I/Xzji6UZ+x1V8/llcQSAI0bINqpZtvAqqTzuU/qAdzRCnrpaME8x57k8tUu2KbosjSQE85sSwcLBGD1DQ==}
-    engines: {node: '>=10.13'}
-    peerDependencies:
-      typescript: ^4.1.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      csstype: 3.1.1
-      htmlparser2: 6.1.0
-      style-vendorizer: 2.2.3
-      typescript: 4.7.4
-    dev: false
 
   /twind/0.16.19_typescript@4.9.5:
     resolution: {integrity: sha512-/9H7I/Xzji6UZ+x1V8/llcQSAI0bINqpZtvAqqTzuU/qAdzRCnrpaME8x57k8tUu2KbosjSQE85sSwcLBGD1DQ==}

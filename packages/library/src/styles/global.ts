@@ -1,7 +1,6 @@
-import { theme } from 'twind';
-import { css } from 'twind/css';
+import { theme, css } from '@sam/theme/twind';
 
-import tokens from './tokens';
+import { font } from '@sam/theme';
 
 export const globalStyles = css({
   ':global': {
@@ -11,8 +10,8 @@ export const globalStyles = css({
     a: {
       fontFamily: theme('fontFamily.roboto'),
       color: theme('colors.neutral.700'),
-      fontSize: tokens.text.body.standard,
-      lineHeight: tokens.lineHeight.body.standard,
+      fontSize: font.text.body.standard,
+      lineHeight: font.lineHeight.body.standard,
       fontWeight: 400,
       margin: 0,
       textDecoration: 'none',
@@ -24,8 +23,8 @@ export const globalStyles = css({
     h1: {
       fontFamily: theme('fontFamily.montserrat'),
       color: theme('colors.neutral.900'),
-      fontSize: tokens.text.heading[32],
-      lineHeight: tokens.lineHeight.heading[32],
+      fontSize: font.text.heading[32],
+      lineHeight: font.lineHeight.heading[32],
       fontWeight: 700,
       margin: 0,
       textTransform: 'uppercase',
@@ -33,8 +32,8 @@ export const globalStyles = css({
     h2: {
       fontFamily: theme('fontFamily.montserrat'),
       color: theme('colors.neutral.900'),
-      fontSize: tokens.text.heading[25],
-      lineHeight: tokens.lineHeight.heading[25],
+      fontSize: font.text.heading[25],
+      lineHeight: font.lineHeight.heading[25],
       fontWeight: 700,
       margin: 0,
       textTransform: 'uppercase',
@@ -42,8 +41,8 @@ export const globalStyles = css({
     h3: {
       fontFamily: theme('fontFamily.montserrat'),
       color: theme('colors.neutral.900'),
-      fontSize: tokens.text.heading[20],
-      lineHeight: tokens.lineHeight.heading[20],
+      fontSize: font.text.heading[20],
+      lineHeight: font.lineHeight.heading[20],
       fontWeight: 700,
       margin: 0,
       textTransform: 'uppercase',
@@ -51,8 +50,8 @@ export const globalStyles = css({
     h4: {
       fontFamily: theme('fontFamily.roboto'),
       color: theme('colors.neutral.800'),
-      fontSize: tokens.text.heading[18],
-      lineHeight: tokens.lineHeight.heading[18],
+      fontSize: font.text.heading[18],
+      lineHeight: font.lineHeight.heading[18],
       fontWeight: 700,
       margin: 0,
       textTransform: 'uppercase',
@@ -60,8 +59,8 @@ export const globalStyles = css({
     h5: {
       fontFamily: theme('fontFamily.roboto'),
       color: theme('colors.neutral.800'),
-      fontSize: tokens.text.heading[16],
-      lineHeight: tokens.lineHeight.heading[16],
+      fontSize: font.text.heading[16],
+      lineHeight: font.lineHeight.heading[16],
       fontWeight: 700,
       margin: 0,
       textTransform: 'uppercase',
@@ -69,8 +68,8 @@ export const globalStyles = css({
     h6: {
       fontFamily: theme('fontFamily.roboto'),
       color: theme('colors.neutral.800'),
-      fontSize: tokens.text.heading[14],
-      lineHeight: tokens.lineHeight.heading[14],
+      fontSize: font.text.heading[14],
+      lineHeight: font.lineHeight.heading[14],
       fontWeight: 700,
       margin: 0,
       textTransform: 'uppercase',
@@ -78,16 +77,16 @@ export const globalStyles = css({
     p: {
       fontFamily: theme('fontFamily.roboto'),
       color: theme('colors.neutral.700'),
-      fontSize: tokens.text.body.standard,
-      lineHeight: tokens.lineHeight.body.standard,
+      fontSize: font.text.body.standard,
+      lineHeight: font.lineHeight.body.standard,
       fontWeight: 400,
       margin: 0,
     },
     li: {
       fontFamily: theme('fontFamily.roboto'),
       color: theme('colors.neutral.700'),
-      fontSize: tokens.text.body.standard,
-      lineHeight: tokens.lineHeight.body.standard,
+      fontSize: font.text.body.standard,
+      lineHeight: font.lineHeight.body.standard,
       fontWeight: 400,
       margin: 0,
     },
@@ -96,8 +95,8 @@ export const globalStyles = css({
       fontFamily: theme('fontFamily.roboto'),
     },
     label: {
-      fontSize: tokens.text.body.standard,
-      lineHeight: tokens.lineHeight.body.standard,
+      fontSize: font.text.body.standard,
+      lineHeight: font.lineHeight.body.standard,
       fontWeight: 700,
       fontFamily: theme('fontFamily.roboto'),
     },

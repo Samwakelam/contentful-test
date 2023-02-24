@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
-import { tw } from 'twind';
+
+import { tw } from '@sam/theme/twind';
 
 import { InputProps } from './input.definition';
 

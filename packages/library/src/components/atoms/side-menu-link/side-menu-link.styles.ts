@@ -1,6 +1,6 @@
-import { css, CSSRules, Directive, theme } from 'twind/css';
+import { css, CSSRules, Directive, theme } from '@sam/theme/twind';
 
-import tokens from '../../../styles/tokens';
+import { spacing } from '@sam/theme';
 
 export const SlideMenuLinkStyles = ``;
 
@@ -9,10 +9,10 @@ export const SlideMenuLinkCss: Directive<CSSRules> = css({
     display: 'block',
     backgroundColor: theme('colors.neutral.50'),
     color: theme('colors.neutral.900'),
-    padding: `${tokens.spacing[24]} ${tokens.spacing[32]}`,
+    padding: `${spacing[24]} ${spacing[32]}`,
     textTransform: 'uppercase',
     fontWeight: '700',
-    margin: `${tokens.spacing[16]} 0`,
+    margin: `${spacing[16]} 0`,
     borderRadius: theme('spacing.4'),
   },
 });

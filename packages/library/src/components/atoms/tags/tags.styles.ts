@@ -1,6 +1,5 @@
-import { css, theme } from 'twind/css';
-
-import tokens from '../../../styles/tokens';
+import { font } from '@sam/theme';
+import { css, theme } from '@sam/theme/twind';
 
 export const TagContainerCss = css({
   '&': {
@@ -14,8 +13,8 @@ export const TagContainerCss = css({
 
 export const TagCss = css({
   '&': {
-    fontSize: tokens.text.heading[12],
-    lineHeight: tokens.lineHeight.heading[12],
+    fontSize: font.text.heading[12],
+    lineHeight: font.lineHeight.heading[12],
     borderRadius: theme('spacing.4'),
     paddingLeft: theme('spacing.4'),
     paddingRight: theme('spacing.4'),

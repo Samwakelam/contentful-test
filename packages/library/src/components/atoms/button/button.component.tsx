@@ -1,5 +1,4 @@
-import { apply, CSSRules, Directive, tw } from 'twind';
-
+import { apply, CSSRules, Directive, tw } from '@sam/theme/twind';
 import { Icon } from '@sam/icons';
 
 import { ButtonProps, ButtonVariant } from './button.definition';

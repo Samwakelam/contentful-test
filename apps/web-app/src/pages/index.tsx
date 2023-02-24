@@ -1,16 +1,10 @@
 import { GetServerSidePropsContext } from 'next';
 import { useState } from 'react';
 
-import {
-  WebApp,
-  WebAppProps,
-  renderWidget,
-  parseEntry,
-  renderWidgets,
-} from '@sam/library';
-import { RegionCode, Regions, Widget } from '@sam/types';
+import { WebApp, WebAppProps, renderWidgets } from '@sam/library';
+import { RegionCode, Regions } from '@sam/types';
 
-import { getEntries, getEntry, getLocales } from '../../lib';
+import { getEntries, getLocales } from '../../lib';
 
 type IndexProps = {
   widgets: any[];

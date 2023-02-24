@@ -1,6 +1,7 @@
 import { Icon } from '@sam/icons';
 import { ReactElement, useRef } from 'react';
-import { tw } from 'twind';
+
+import { tw } from '@sam/theme/twind';
 
 import { Label } from '../../atoms';
 

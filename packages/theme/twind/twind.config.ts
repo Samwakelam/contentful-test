@@ -1,14 +1,11 @@
-import { colours } from '@sam/theme';
-import { content } from '@twind/content';
 import { Configuration } from 'twind';
+import { content } from '@twind/content';
+
+import { colours, font } from '../src';
 
 export const themeConfig: Configuration = {
   plugins: { content },
   theme: {
-    fontFamily: {
-      montserrat: ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
-      roboto: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-    },
     spacing: {
       0: '0',
       2: '0.125rem',
@@ -35,6 +32,9 @@ export const themeConfig: Configuration = {
       544: '34rem',
     },
     extend: {
+      fontFamily: {
+        ...font.fontFamily,
+      },
       colors: {
         ...colours,
       },

@@ -1,5 +1,7 @@
 import { ReactElement } from 'react';
-import { tw } from 'twind';
+
+import { tw } from '@sam/theme/twind';
+
 import { Button, ButtonVariant } from '../button';
 import { BarProps } from './bar.definition';
 

@@ -1,16 +1,14 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { setup, tw } from 'twind';
 import withTwindApp from '@twind/next/app';
 
 import { globalStyles, registerWidgets } from '@sam/library';
-
-import themeConfig from '../twind.config';
+import { themeConfig, setup, tw } from '@sam/theme/twind';
 
 import '../styles/reset.css';
 
-function App({ Component, pageProps }: any): JSX.Element {
+function App({ Component, pageProps }: AppProps): JSX.Element {
   setup(themeConfig);
   registerWidgets();
 

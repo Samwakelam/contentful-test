@@ -1,7 +1,7 @@
 import NextDocument, { Html, Main, Head, NextScript } from 'next/document';
 import withTwindDocument from '@twind/next/document';
 
-import themeConfig from '../twind.config';
+import { themeConfig } from '@sam/theme/twind';
 
 class Document extends NextDocument {
   render(): JSX.Element {

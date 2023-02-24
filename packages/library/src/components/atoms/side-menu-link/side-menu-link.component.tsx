@@ -1,4 +1,4 @@
-import { tw } from 'twind';
+import { tw } from '@sam/theme/twind';
 
 import { SlideMenuLinkProps } from './side-menu-link.definition';
 

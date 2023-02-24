@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { tw } from 'twind';
 
+import { tw } from '@sam/theme/twind';
 import { Icon } from '@sam/icons';
 
 import { Input, Label } from '../../atoms';

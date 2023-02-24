@@ -1,9 +1,9 @@
 import { locations } from '@contentful/app-sdk';
 import { useSDK } from '@contentful/react-apps-toolkit';
 import { useMemo } from 'react';
-import { setup, tw } from 'twind';
 
-import { themeConfig, globalStyles } from '@sam/library';
+import { globalStyles } from '@sam/library';
+import { themeConfig, setup, tw } from '@sam/theme/twind';
 
 import ConfigScreen from './locations/ConfigScreen';
 import Dialog from './locations/Dialog';
