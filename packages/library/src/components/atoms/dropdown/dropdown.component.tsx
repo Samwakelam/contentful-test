@@ -75,7 +75,7 @@ export const Dropdown = ({
   );
 };
 
-const resolveActiveStyle = (
+export const resolveActiveStyle = (
   styles: ActiveStyleType[],
   isActive: boolean | undefined
 ) => {

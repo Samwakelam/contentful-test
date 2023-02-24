@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import { Button } from './button.component';
 
-describe.only('Button', () => {
+describe.only('button.component', () => {
   it('should show the button text sent in as children', () => {
     const button = <Button>Button</Button>;
 

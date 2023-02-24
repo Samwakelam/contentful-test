@@ -11,5 +11,5 @@ export type BarProps = {
     isFixed: boolean;
     onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   };
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 };
