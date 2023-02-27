@@ -1,4 +1,4 @@
-import { Entry } from 'contentful';
+import { Entry } from '@sam/contentful/delivery';
 
 // Entry<any> from the deliveryAPI 'contentful'
 export const mockEntry: Omit<Entry<any>, 'update'> = {

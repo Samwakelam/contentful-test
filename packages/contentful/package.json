@@ -12,14 +12,19 @@
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.10",
-    "typescript": "^4.9.5",
-    "tsconfig": "workspace:*"
+    "tsconfig": "workspace:*",
+    "typescript": "^4.9.5"
   },
   "dependencies": {
     "@contentful/app-sdk": "4.13.0",
     "@contentful/react-apps-toolkit": "1.2.2",
+    "contentful": "^9.3.0",
     "contentful-management": "10.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "exports": {
+    "./delivery": "./delivery/index.ts",
+    "./management": "./management/index.ts"
   }
 }
