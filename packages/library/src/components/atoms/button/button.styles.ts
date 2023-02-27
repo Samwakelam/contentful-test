@@ -129,7 +129,7 @@ export const IconButtonCss: Directive<CSSRules> = css({
     width: theme('spacing.44'),
     justifyContent: 'center',
 
-    i: {
+    'span, i': {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
