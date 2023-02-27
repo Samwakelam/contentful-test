@@ -1,7 +1,5 @@
 import { css, CSSRules, Directive, theme } from '@sam/theme/twind';
 
-import { font } from '@sam/theme';
-
 export const WebAppCss: Directive<CSSRules> = css({
   '&': {
     display: 'flex',
@@ -21,8 +19,7 @@ export const BoxCss: Directive<CSSRules> = css({
 export const SubtitleCss: Directive<CSSRules> = css({
   '&': {
     color: theme('colors.neutral.600'),
-    fontSize: font.text.heading[14],
-    lineHeight: font.lineHeight.heading[14],
+    fontSize: theme('fontSize.14'),
   },
 });
 

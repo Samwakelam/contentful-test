@@ -1,5 +1,4 @@
 import { ColourType } from '@sam/types';
-import { font } from '@sam/theme';
 import { css, Theme, theme } from '@sam/theme/twind';
 
 export const MenuDropdownCss = css({
@@ -80,8 +79,7 @@ export const MenuButtonStyles = `
 
 export const TriggerSelectedCss = css({
   '&': {
-    fontSize: font.text.heading[13],
-    lineHeight: font.lineHeight.heading[13],
+    fontSize: theme('fontSize.13'),
     display: 'flex',
     alignItems: 'center',
     gap: theme('spacing.8'),

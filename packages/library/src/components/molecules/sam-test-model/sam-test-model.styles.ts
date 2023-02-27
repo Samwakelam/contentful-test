@@ -1,9 +1,8 @@
-import { css } from '@sam/theme/twind';
-import { font } from '@sam/theme';
+import { css, theme } from '@sam/theme/twind';
 
 export const SamTestModelCss = css({
   '& p:last-child': {
-    fontSize: font.text.body.small,
+    fontSize: theme('fontSize.14'),
     display: 'none',
   },
 });

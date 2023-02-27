@@ -1,4 +1,3 @@
-import { font } from '@sam/theme';
 import { css, theme } from '@sam/theme/twind';
 
 export const TagContainerCss = css({
@@ -13,8 +12,7 @@ export const TagContainerCss = css({
 
 export const TagCss = css({
   '&': {
-    fontSize: font.text.heading[12],
-    lineHeight: font.lineHeight.heading[12],
+    fontSize: theme('fontSize.12'),
     borderRadius: theme('spacing.4'),
     paddingLeft: theme('spacing.4'),
     paddingRight: theme('spacing.4'),

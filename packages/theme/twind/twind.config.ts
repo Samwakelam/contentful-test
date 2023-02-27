@@ -2,6 +2,7 @@ import { Configuration } from 'twind';
 import { content } from '@twind/content';
 
 import { colours, font } from '../src';
+import { parseFontSize } from './helpers/parse-font-size.helper';
 
 export const themeConfig: Configuration = {
   plugins: { content },
@@ -31,10 +32,13 @@ export const themeConfig: Configuration = {
       304: '19rem',
       544: '34rem',
     },
+    fontSize: {
+      ...parseFontSize(),
+    },
+    fontFamily: {
+      ...font.fontFamily,
+    },
     extend: {
-      fontFamily: {
-        ...font.fontFamily,
-      },
       colors: {
         ...colours,
       },
