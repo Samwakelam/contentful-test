@@ -1,14 +1,14 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import { mockEntry } from '../../../__synthetics__';
 import { mockWidget } from '../../../__synthetics__/widget.mock';
+
 import { parseEntry } from './parse-entry.helper';
 
 describe('parse-entry', () => {
   it('should convert the contentful Entry to a system Widget', () => {
-    const entry = mockEntry;
+    const entry = { ...mockEntry, update: vi.fn() };
 
-    //@ts-ignore - not passing the update promise object in the mock object
     const parsed = parseEntry(entry);
 
     const widget = mockWidget;
@@ -17,13 +17,13 @@ describe('parse-entry', () => {
   });
 
   it('should resolve the fields object where present', () => {
-    const entry = mockEntry;
+    const entry = { ...mockEntry, update: vi.fn() };
+
     entry.fields = {
       name: 'test name',
       description: 'test description',
     };
 
-    //@ts-ignore - not passing the update promise object in the mock object
     const parsed = parseEntry(entry);
 
     const widget = mockWidget;

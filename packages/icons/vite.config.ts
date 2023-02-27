@@ -7,9 +7,9 @@ import * as process from 'process';
 // https://vitejs.dev/config/
 
 export default defineConfig((_: ConfigEnv) => {
-  const isDevelop = ['development'].includes(
-    process.env.NODE_ENV ?? 'development'
-  );
+  // const isDevelop = ['development'].includes(
+  //   process.env.NODE_ENV ?? 'development'
+  // );
 
   return {
     plugins: [react()],
@@ -17,7 +17,7 @@ export default defineConfig((_: ConfigEnv) => {
       alias: [
         {
           find: /(.*).service/,
-          replacement: isDevelop ? '$1.mock' : '$1.service',
+          replacement: '$1.mock',
         },
       ],
     },
