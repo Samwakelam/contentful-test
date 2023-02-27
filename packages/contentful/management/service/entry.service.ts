@@ -5,7 +5,8 @@ import {
   KeyValueMap,
   QueryOptions,
 } from 'contentful-management';
-import { getEnvironment } from '../client/client';
+
+import { getEnvironment } from '../client';
 
 export class EntryService {
   constructor() {}
@@ -18,7 +19,6 @@ export class EntryService {
       EntryProps<KeyValueMap>
     > = await environment.getEntries(query);
 
-    console.log('entries.items: ', entries.items);
     return entries.items;
   }
 

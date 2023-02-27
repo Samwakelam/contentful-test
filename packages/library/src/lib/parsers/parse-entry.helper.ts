@@ -1,4 +1,4 @@
-import { Entry } from 'contentful';
+import { Entry } from '@sam/contentful/delivery';
 
 import { Widget } from '@sam/types';
 

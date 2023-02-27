@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { EntryService } from '@sam/contentful';
+import { EntryService } from '@sam/contentful/management';
 import { Region, RegionCode, Regions, Widget } from '@sam/types';
 
 import { ContentfulAppContract } from './use-contentful-app.contract';
