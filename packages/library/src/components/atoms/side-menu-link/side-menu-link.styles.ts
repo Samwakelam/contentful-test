@@ -11,7 +11,7 @@ export const SlideMenuLinkCss: Directive<CSSRules> = css({
     color: theme('colors.neutral.900'),
     padding: `${spacing[24]} ${spacing[32]}`,
     textTransform: 'uppercase',
-    fontWeight: '700',
+    fontWeight: theme('fontWeight.bold'),
     margin: `${spacing[16]} 0`,
     borderRadius: theme('spacing.4'),
   },

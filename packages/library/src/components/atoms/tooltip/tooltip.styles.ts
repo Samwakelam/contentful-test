@@ -21,7 +21,7 @@ export const TipCss = css({
     paddingLeft: theme('spacing.8'),
     color: theme('colors.neutral.50'),
     background: theme('colors.neutral.900'),
-    fontSize: '14px',
+    fontSize: theme('fontSize.1'),
     fontFamily: theme('fontFamily.roboto'),
     lineHeight: theme('spacing.20'),
     zIndex: 100,

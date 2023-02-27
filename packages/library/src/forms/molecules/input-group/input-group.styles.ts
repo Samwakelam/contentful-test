@@ -1,4 +1,5 @@
 import { css, theme } from '@sam/theme/twind';
+
 import { font } from '@sam/theme';
 
 export const InputGroupCss = css({
@@ -23,7 +24,7 @@ export const IconCss = css({
     position: 'absolute',
     top: theme('spacing.12'),
     right: theme('spacing.40'),
-    height: font.text.body.small,
+    height: theme('spacing.14'),
     width: font.lineHeight.body.small,
   },
   '& svg': {
