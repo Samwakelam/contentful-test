@@ -175,6 +175,7 @@ export const ContentfulAppProvider = ({
 
       if (widget && widget.publishedAt && widget.updatedAt) {
         const publishedAt = new Date(widget?.publishedAt).getTime();
+
         const updatedAt = new Date(widget?.updatedAt).getTime();
 
         if (publishedAt < updatedAt) {
