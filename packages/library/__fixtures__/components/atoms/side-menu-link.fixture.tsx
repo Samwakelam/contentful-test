@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { SlideMenuLink } from '../../../src';
 
 export default {

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { useState } from 'react';
 
 import { Button, Modal } from '../../../src';

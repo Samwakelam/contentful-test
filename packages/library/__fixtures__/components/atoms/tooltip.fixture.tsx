@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { ReactElement } from 'react';
 import { useSelect } from 'react-cosmos/fixture';
 
@@ -123,7 +122,7 @@ export default {
     return (
       <Wrapper>
         <Tooltip
-          content="Hide the element from everyone"
+          content="Use the controls to change the size and position"
           direction={TooltipDirection}
           defaultOpen={true}
           size={TooltipSize}

@@ -1,6 +1,7 @@
 export * from './bar';
 export * from './button';
 export * from './card';
+export * from './carousel';
 export * from './dropdown';
 export * from './modal';
 export * from './placeholder';

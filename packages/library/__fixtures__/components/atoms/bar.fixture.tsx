@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable import/no-anonymous-default-export */
 import { useSelect } from 'react-cosmos/fixture';
 
 import { Bar } from '../../../src';
